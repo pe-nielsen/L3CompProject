@@ -7,11 +7,12 @@ import matplotlib.cm as cm
 from time import time
 from datetime import timedelta
 import pickle
+import bz2
 from pathlib import Path
 import numpy as np
 
 plt.style.use('seaborn-deep')
-plt.style.use(r'C:\Users\splb68\comp_proj\scripts\PaperDoubleFig.mplstyle')
+plt.style.use(r'PaperDoubleFig.mplstyle')
 
 
 def plotCompResults(compResults):
@@ -60,7 +61,7 @@ def plotCompResults(compResults):
                  marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
         axP.plot(densities, pressures_minRhokT,
                  marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
-    fig.savefig(r'C:\Users\splb68\comp_proj\simulationResults\smallRun_isotherms\compResult\result.png', format='png', dpi=600)
+    fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=600)
     fig.show()
 
 def importCompResults(cR_parent_dir):
@@ -74,7 +75,7 @@ def importCompResults(cR_parent_dir):
         for j in range(len(data_files)):
             df = data_files[j]
             data_path = join(rT_path, df)
-            infile = open(data_path, 'rb')
+            infile = bz2.BZ2File(data_path, 'r')
             cR = pickle.load(infile)
             infile.close()
             compResults.append(cR)
@@ -85,13 +86,13 @@ def importCompResults(cR_parent_dir):
 if __name__ == '__main__':
     startTime = time()
 
-    cR_parent_dir = r'C:\Users\splb68\comp_proj\simulationResults\smallRun_isotherms\compResult'
+    cR_parent_dir = r'simulationResults/smallRunIsotherms3/compResultLargedr'
     compResults = importCompResults(cR_parent_dir)
     plotCompResults(compResults)
 
     endTime = time() - startTime
     print(f'---{timedelta(seconds=endTime)}---')
-    # quit()
+    quit()
 
 
 

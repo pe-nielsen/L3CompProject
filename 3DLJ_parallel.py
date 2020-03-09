@@ -199,12 +199,12 @@ def main(tempDens):
     # redTemp = Boltzmann_const * system_temp / well_depth
     mode = 'LJ'
 
-    numEquilMoves = int(1e5)  # must be integer
+    numEquilMoves = int(1e6)  # must be integer
     # numEquilMoves = int(1e4)  # must be integer
     numEquilIter = 1000  # number of iterations of moves for equil - for varying displacement
     initDisplacement = 0.1  # todo: compare displacement and acceptance rate with Ben's work
 
-    numEvolveMoves = 1e5
+    numEvolveMoves = 2e6
     configSampleRate = 1000
 
     displacement = initDisplacement
@@ -223,7 +223,7 @@ def main(tempDens):
     # Saving the simResult
     # parent_dir = r'C:\Users\Peter Nielsen\Documents\l3\comp_proj\simulationResults\testRun' + f'\\redTemp{redTemp*100}'
     # parent_dir = join(r'C:\Users\splb68\comp_proj\simulationResults\medRun_isotherms', f'redTemp{redTemp}')
-    parent_dir = join(r'\simulationResults\smallRunIsotherms', f'redTemp{redTemp}')
+    parent_dir = join(r'simulationResults\smallRunIsotherms3', f'redTemp{redTemp}')
     Path(parent_dir).mkdir(parents=True, exist_ok=True)
     filename = f'den{sR.density}'
     filepath = join(parent_dir, filename)
@@ -231,7 +231,7 @@ def main(tempDens):
     outfile = bz2.BZ2File(filepath, 'w')
     toPickle = sR
     pickle.dump(toPickle, outfile)
-    # outfile.close()
+    outfile.close()
 
     print(f'''\n\n
         Configurations saved for:
@@ -246,10 +246,12 @@ if __name__ == '__main__':
 
 
 
+    # densities = [0.2, 0.4, 0.5, 0.6, 0.7, 0.8]
+    # redTemps = [1, 5, 10]
     # densities = [0.2, 0.3, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8]
     # redTemps = [0.5, 1, 1.5, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    densities = [1, 3, 6]
-    redTemps = [1, 6, 11]
+    densities = [1, 2, 3, 4, 5, 6]
+    redTemps = [1, 11]
 
     tempDenss = []
     for rT in redTemps:
@@ -257,7 +259,7 @@ if __name__ == '__main__':
             tempDens = [rT, d]
             tempDenss.append(tempDens)
 
-    numPools = 10  # number of cores used for calculations
+    numPools = 5  # number of cores used for calculations
 
     with Pool(numPools) as p:
         p.map(main, tempDenss)
