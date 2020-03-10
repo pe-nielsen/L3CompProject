@@ -3,6 +3,7 @@ from commonFunctions import *
 from initial_parameters import *
 from LJ3D_parallel import Container, genMoves_rndV, initialiseSystem, equilibrateSystem, evolveSystem, runSim
 from LJ3Danalysis_parallel import computeQuantities, runComp
+from plotCompResults import importCompResults, plotCompResults
 
 from os import listdir
 from os.path import isfile, join
@@ -31,10 +32,10 @@ def model(tempDens):
     displacement = initDisplacement
     mode = 'LJ'
 
-    print(f"""\n
+    print(f"""
     current density: {density}
     current redTemp: {redTemp}
-    \n""")
+    """)
 
     container = initialiseSystem(numParts, density, dim, sigma, redTemp, mode)
     equilibrateSystem(container, numEquilMoves, numEquilIter, displacement)
@@ -44,12 +45,12 @@ def model(tempDens):
                    numEvolveMoves, container.displacement, container.mode, container.density,
                    container.partRad, container.length, configs)
 
-    print(f"""\n
+    print(f"""
     Evolution completed for:
     density: {sR.density},
     redTemp: {sR.redTemp},
     at time: ---{timedelta(seconds=(time()))}---''',
-    \n""")
+    """)
 
     cR = computeQuantities(sR)
 
@@ -64,12 +65,12 @@ def model(tempDens):
     pickle.dump(toDump, outfile)
     outfile.close()
 
-    print(f"""\n
+    print(f"""
         Computation completed and saved for:
         density: {sR.density},
         redTemp: {sR.redTemp},
         at time: ---{timedelta(seconds=(time()))}---''',
-        \n""")
+        """)
 
 
 if __name__ == '__main__':
@@ -85,9 +86,15 @@ if __name__ == '__main__':
     with Pool(numPools) as p:
         p.map(model, tempDenss)
 
+    cRDir = join(simResultDir, r'compResult')
+    cRs = importCompResults(cRDir)
+    plotCompResults(cRs, cRDir)
+    print(f"""
+    Results plotted.
+    File saved at: {cRDir}
+    """)
+
     endTime = time() - startTime
     print(f'Time to run: ---{timedelta(seconds=endTime)}---')
-
-
 
     quit()

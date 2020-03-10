@@ -10,7 +10,8 @@ import bz2
 from pathlib import Path
 from multiprocessing import Pool
 from resultClasses import simResult
-from commonFunctions import getDistanceSquared, redLJ, simResultDir
+from commonFunctions import getDistanceSquared, redLJ
+from initial_parameters import simResultDir
 import numpy as np
 import numexpr as ne
 np.random.seed(1)

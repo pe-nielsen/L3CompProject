@@ -11,11 +11,13 @@ import bz2
 from pathlib import Path
 import numpy as np
 
-plt.style.use('seaborn-deep')
-plt.style.use(r'PaperDoubleFig.mplstyle')
+# plt.style.use('seaborn-deep')
+# plt.style.use(r'PaperDoubleFig.mplstyle')
 
 
-def plotCompResults(compResults):
+def plotCompResults(compResults, cR_parent_dir):
+    plt.style.use('seaborn-deep')
+    plt.style.use(r'PaperDoubleFig.mplstyle')
     # first: unpack cRs into lists of results for each reduced temp
     # lists of intEn_perPart, pressure_minRhokT
 
@@ -61,8 +63,8 @@ def plotCompResults(compResults):
                  marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
         axP.plot(densities, pressures_minRhokT,
                  marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
-    fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=600)
-    fig.show()
+    fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=1200)
+    # fig.show()
 
 def importCompResults(cR_parent_dir):
     compResults = []
@@ -88,7 +90,7 @@ if __name__ == '__main__':
 
     cR_parent_dir = r'simulationResults/smallRunIsotherms3/compResultLargedr'
     compResults = importCompResults(cR_parent_dir)
-    plotCompResults(compResults)
+    plotCompResults(compResults, cR_parent_dir)
 
     endTime = time() - startTime
     print(f'---{timedelta(seconds=endTime)}---')

@@ -23,8 +23,8 @@ plt.style.use(r'PaperDoubleFig.mplstyle')
 
 
 def computeQuantities(sR):
-    # binWidthFactor = 0.02
-    binWidthFactor = 0.1
+    binWidthFactor = 0.02
+    # binWidthFactor = 0.1
     dr = binWidthFactor * sR.partRad
     rMax = 10 * sR.partRad
 
