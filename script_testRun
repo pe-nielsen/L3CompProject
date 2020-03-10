@@ -5,8 +5,8 @@
 # ^ number of cores (16 per node)
 #SBATCH -p cpu
 #SBATCH --qos=debug
-#SBATCH --job-name=PetesJob
-#SBATCH -o ./output/firstOutput.txt
+#SBATCH --job-name=firstTestRun
+#SBATCH -o ./output/debug_1.txt
 
 source /etc/profile
-python3 commonFunctions.py
+python3 LJ3D_joined.py
