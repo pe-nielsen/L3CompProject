@@ -1,4 +1,4 @@
-simResultDir = r'simulationResults/debugRun'
+simResultDir = r'resultsNCC/longRun1'
 
 # densities = [3, 4, 5, 5.25, 5.5, 5.75, 6]
 # redTemps = [1, 11]
@@ -15,8 +15,8 @@ sigma = 3.4e-10
 well_depth = 1.65e-21
 Boltzmann_const = 1.38064852e-23  # m^2.kg.s^-2.K-1
 
-numEquilMoves = int(5e5)
-numEvolveMoves = int(5e5)
+numEquilMoves = int(5e6)
+numEvolveMoves = int(2e7)
 
 numEquilIter = 1000
 initDisplacement = 0.1
