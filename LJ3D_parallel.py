@@ -1,6 +1,7 @@
 from os import listdir
 from os.path import isfile, join
 import matplotlib.pyplot as plt
+
 from mpl_toolkits.mplot3d import Axes3D
 from time import time
 from datetime import timedelta
@@ -9,7 +10,7 @@ import bz2
 from pathlib import Path
 from multiprocessing import Pool
 from resultClasses import simResult
-from commonFunctions import getDistanceSquared, redLJ
+from commonFunctions import getDistanceSquared, redLJ, simResultDir
 import numpy as np
 import numexpr as ne
 np.random.seed(1)
@@ -151,7 +152,7 @@ def equilibrateSystem(container, numMoves, numEquilIter, initDisplacement):
     print(f'Equilibration completed:\n'
           f'    final displacement: {container.displacement},\n'
           f'    acceptance: {container.validMoves/numMoves},\n'
-          f'    reducedTemp: {container.redTemp},\n'
+          f'    redTemp: {container.redTemp},\n'
           f'    density: {container.density}\n')
 
 
@@ -182,7 +183,7 @@ def evolveSystem(container, numMoves, configSampleRate):
     return configs
 
 
-def main(tempDens):
+def runSim(tempDens):
     '''create single container with given redTemp and density, evolve it and save the configuration at an interval'''
 
     redTemp = tempDens[0]
@@ -223,7 +224,7 @@ def main(tempDens):
     # Saving the simResult
     # parent_dir = r'C:\Users\Peter Nielsen\Documents\l3\comp_proj\simulationResults\testRun' + f'\\redTemp{redTemp*100}'
     # parent_dir = join(r'C:\Users\splb68\comp_proj\simulationResults\medRun_isotherms', f'redTemp{redTemp}')
-    parent_dir = join(r'simulationResults\smallRunIsotherms3', f'redTemp{redTemp}')
+    parent_dir = join(simResultDir, f'redTemp{redTemp}')
     Path(parent_dir).mkdir(parents=True, exist_ok=True)
     filename = f'den{sR.density}'
     filepath = join(parent_dir, filename)
@@ -262,7 +263,7 @@ if __name__ == '__main__':
     numPools = 5  # number of cores used for calculations
 
     with Pool(numPools) as p:
-        p.map(main, tempDenss)
+        p.map(runSim, tempDenss)
 
     endTime = time() - startTime
     print(f'---{timedelta(seconds=endTime)}---')

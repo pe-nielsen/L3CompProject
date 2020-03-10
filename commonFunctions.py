@@ -1,8 +1,5 @@
 import numpy as np
 import numexpr as ne
-import os
-from os.path import isfile, join
-
 
 def getDistanceSquared(testLoc, partLocs, containerLength, dim):
     diffs = np.absolute(ne.evaluate('partLocs - testLoc'))

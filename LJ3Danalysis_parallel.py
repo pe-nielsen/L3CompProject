@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 
 from resultClasses import simResult, compResult
 from commonFunctions import getDistanceSquared, redLJ, diff_redLJ
+from initial_parameters import simResultDir
 
 from time import time
 from datetime import timedelta
@@ -99,12 +100,13 @@ def computeQuantities(sR):
     return cR
 
 
-def main(sR):
+def runComp(sR):
     """calculate and save quantities for a single simResult"""
     cR = computeQuantities(sR)
 
     #saving the compResult:
-    parent_dir = r'simulationResults/smallRunIsotherms3'
+    # parent_dir = r'simulationResults/smallRunIsotherms3'
+    parent_dir = simResultDir
     cR_sub_dir = f'compResultLargedr/redTemp{cR.redTemp}'
     cR_parent_dir = join(parent_dir, cR_sub_dir)
     Path(cR_parent_dir).mkdir(parents=True, exist_ok=True)
@@ -130,7 +132,7 @@ if __name__ == '__main__':
     # finding all simResult files
     simResults = []  # holds list of all simResults
 
-    parent_dir = r'simulationResults/smallRunIsotherms3'
+    parent_dir = simResultDir
     redTemp_dirs = [f for f in listdir(parent_dir) if not isfile(join(parent_dir, f)) and 'redTemp' in f]
 
     for i in range(len(redTemp_dirs)):
@@ -152,7 +154,7 @@ if __name__ == '__main__':
 
     numPools = 6  # number of cores used for calculations
     with Pool(numPools) as p:
-        p.map(main, simResults)
+        p.map(runComp, simResults)
 
     endTime = time() - startTime
     print(f'Run Time:   ---{timedelta(seconds=endTime)}---')
