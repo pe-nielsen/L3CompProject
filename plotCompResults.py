@@ -61,9 +61,9 @@ def plotCompResults(compResults, cR_parent_dir):
                 densities.append(cR.density)
 
         axU.plot(densities, intEns_perPart,
-                 marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
+                 ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
         axP.plot(densities, pressures_minRhokT,
-                 marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
+                 ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
     fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=1200)
     # fig.show()
 
