@@ -1,0 +1,402 @@
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(LJ3D_joined.py:3122): Gdk-CRITICAL **: 15:33:54.586: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+Started at: ---18331 days, 15:33:54.617839---
+
+    current density: 4
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.0018253834846593963,
+    acceptance: 0.3175766,
+    redTemp: 5,
+    density: 4
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 4
+    total acceptance = 0.33509045
+    final displacement = 0.0018253834846593963
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 4,
+    redTemp: 5,
+    at time: ---18331 days, 22:47:41.344288---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 4,
+internal energy per particle: 26891.691789904606,
+P - rho.kT = -836174.1896067936
+
+
+        Computation completed and saved for:
+        density: 4,
+        redTemp: 5,
+        at time: ---18332 days, 0:16:44.179859---''',
+        
+
+    current density: 5.5
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.0008924249150467197,
+    acceptance: 0.3096882,
+    redTemp: 5,
+    density: 5.5
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 5.5
+    total acceptance = 0.3255082
+    final displacement = 0.0008924249150467197
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 5.5,
+    redTemp: 5,
+    at time: ---18331 days, 22:49:03.529300---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 5.5,
+internal energy per particle: 86072.84496374415,
+P - rho.kT = -3653045.795249508
+
+
+        Computation completed and saved for:
+        density: 5.5,
+        redTemp: 5,
+        at time: ---18332 days, 0:17:47.179991---''',
+        
+
+    current density: 5.25
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.0009888364709658944,
+    acceptance: 0.3099528,
+    redTemp: 5,
+    density: 5.25
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 5.25
+    total acceptance = 0.3269067
+    final displacement = 0.0009888364709658944
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 5.25,
+    redTemp: 5,
+    at time: ---18331 days, 22:47:58.760095---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 5.25,
+internal energy per particle: 75795.83823692148,
+P - rho.kT = -3072139.1703818296
+
+
+        Computation completed and saved for:
+        density: 5.25,
+        redTemp: 5,
+        at time: ---18332 days, 0:17:12.072460---''',
+        
+
+    current density: 6.25
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.0006560143180425479,
+    acceptance: 0.3091164,
+    redTemp: 5,
+    density: 6.25
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 6.25
+    total acceptance = 0.3302816
+    final displacement = 0.0006560143180425479
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 6.25,
+    redTemp: 5,
+    at time: ---18331 days, 22:48:53.708847---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 6.25,
+internal energy per particle: 162943.19751694458,
+P - rho.kT = -7835312.455645217
+
+
+        Computation completed and saved for:
+        density: 6.25,
+        redTemp: 5,
+        at time: ---18332 days, 0:17:28.233599---''',
+        
+
+    current density: 3
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.0035647932250560204,
+    acceptance: 0.3224766,
+    redTemp: 5,
+    density: 3
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 3
+    total acceptance = 0.3371115
+    final displacement = 0.0035647932250560204
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 3,
+    redTemp: 5,
+    at time: ---18331 days, 22:47:12.880162---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 3,
+internal energy per particle: 7029.0100669282,
+P - rho.kT = -166850.34451803204
+
+
+        Computation completed and saved for:
+        density: 3,
+        redTemp: 5,
+        at time: ---18332 days, 0:17:53.108477---''',
+        
+
+    current density: 4.5
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.0014159869113351004,
+    acceptance: 0.3112098,
+    redTemp: 5,
+    density: 4.5
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 4.5
+    total acceptance = 0.32635205
+    final displacement = 0.0014159869113351004
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 4.5,
+    redTemp: 5,
+    at time: ---18331 days, 22:49:54.129937---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 4.5,
+internal energy per particle: 42017.881566548785,
+P - rho.kT = -1465025.4268795962
+
+
+        Computation completed and saved for:
+        density: 4.5,
+        redTemp: 5,
+        at time: ---18332 days, 0:18:03.635871---''',
+        
+
+    current density: 3.5
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.002489428061918939,
+    acceptance: 0.3183318,
+    redTemp: 5,
+    density: 3.5
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 3.5
+    total acceptance = 0.3374312
+    final displacement = 0.002489428061918939
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 3.5,
+    redTemp: 5,
+    at time: ---18331 days, 22:48:37.510243---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 3.5,
+internal energy per particle: 14568.413869248312,
+P - rho.kT = -398955.2255895521
+
+
+        Computation completed and saved for:
+        density: 3.5,
+        redTemp: 5,
+        at time: ---18332 days, 0:17:55.871023---''',
+        
+
+    current density: 5
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.0010956636797406032,
+    acceptance: 0.3135876,
+    redTemp: 5,
+    density: 5
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 5
+    total acceptance = 0.3327305
+    final displacement = 0.0010956636797406032
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 5,
+    redTemp: 5,
+    at time: ---18331 days, 22:49:38.535891---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 5,
+internal energy per particle: 63558.16556691331,
+P - rho.kT = -2455891.162996824
+
+
+        Computation completed and saved for:
+        density: 5,
+        redTemp: 5,
+        at time: ---18332 days, 0:18:18.687708---''',
+        
+
+    current density: 5.75
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.0008054134858296644,
+    acceptance: 0.309723,
+    redTemp: 5,
+    density: 5.75
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 5.75
+    total acceptance = 0.3249388
+    final displacement = 0.0008054134858296644
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 5.75,
+    redTemp: 5,
+    at time: ---18331 days, 22:49:33.987799---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 5.75,
+internal energy per particle: 114609.54580623862,
+P - rho.kT = -5077383.518712923
+
+
+        Computation completed and saved for:
+        density: 5.75,
+        redTemp: 5,
+        at time: ---18332 days, 0:17:44.803210---''',
+        
+
+    current density: 6
+    current redTemp: 5
+    
+Equilibration completed:
+    final displacement: 0.000726885670961272,
+    acceptance: 0.3075616,
+    redTemp: 5,
+    density: 6
+
+
+System evolved:
+    num moves = 2.00E+07
+    density = 6
+    total acceptance = 0.325915
+    final displacement = 0.000726885670961272
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 6,
+    redTemp: 5,
+    at time: ---18331 days, 22:49:15.654941---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 6,
+internal energy per particle: 118411.75504549677,
+P - rho.kT = -5474236.800770418
+
+
+        Computation completed and saved for:
+        density: 6,
+        redTemp: 5,
+        at time: ---18332 days, 0:17:36.166441---''',
+        
+Computation results successfully imported
+compRes: [<resultClasses.compResult object at 0x7f315fe194e0>, <resultClasses.compResult object at 0x7f315fe19630>, <resultClasses.compResult object at 0x7f315fe194a8>, <resultClasses.compResult object at 0x7f315fe19470>, <resultClasses.compResult object at 0x7f315fe19668>, <resultClasses.compResult object at 0x7f315fe19748>, <resultClasses.compResult object at 0x7f315fe19710>, <resultClasses.compResult object at 0x7f315fe196d8>, <resultClasses.compResult object at 0x7f315fe197b8>, <resultClasses.compResult object at 0x7f315fe19828>]
+
+    Results plotted.
+    File saved at: resultsNCC/longRun1/compResult
+    
+Time to run: ---8:44:28.391331---
