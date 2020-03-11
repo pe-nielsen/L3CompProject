@@ -47,6 +47,7 @@ def plotCompResults(compResults, cR_parent_dir):
     cpick = cm.ScalarMappable(norm=cnorm, cmap=cm1)  # object which maps redTemp to colour
     # cpick.set_array([])
 
+    redTemps.sort()
     for i in range(len(redTemps)):
         rT = redTemps[i]
         intEns_perPart = []
