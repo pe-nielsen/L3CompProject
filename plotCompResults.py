@@ -47,24 +47,38 @@ def plotCompResults(compResults, cR_parent_dir):
     cpick = cm.ScalarMappable(norm=cnorm, cmap=cm1)  # object which maps redTemp to colour
     # cpick.set_array([])
 
-    redTemps.sort()
     for i in range(len(redTemps)):
         rT = redTemps[i]
         intEns_perPart = []
         pressures_minRhokT = []
         densities = []
+        numberDensities = []
+        errorsIn_u = []
+        errorsIn_pressure = []
         for j in range(len(compResults)):
             cR = compResults[j]
             if cR.redTemp == rT:
                 intEns_perPart.append(cR.intEn_perPart)
                 pressures_minRhokT.append(cR.pressure_minRhokT)
                 densities.append(cR.density)
+                numberDensity = cR.numParts/(cR.containerLength**3)
+                print(f'at den {cR.density}, redTemp {cR.redTemp}: number density: {numberDensity}')
+                numberDensities.append(numberDensity)
+
+                sum_ErrorGiSq = np.sum(cR.PCFstdev**2)
+                errorsIn_u.append(2*np.pi*numberDensity*sum_ErrorGiSq)
+                errorsIn_pressure.append((2*np.pi/3)*(numberDensity**2)*sum_ErrorGiSq)
 
         axU.plot(densities, intEns_perPart,
                  ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
+        axU.errorbar(densities, intEns_perPart, yerr=errorsIn_u,
+                     marker='', ls='', ecolor=cpick.to_rgba(rT))
         axP.plot(densities, pressures_minRhokT,
                  ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
-    fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=1200)
+        axP.errorbar(densities, pressures_minRhokT, yerr=errorsIn_pressure,
+                     marker='', ls='', ecolor=cpick.to_rgba(rT))
+
+    fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=600)
     # fig.show()
 
 def importCompResults(cR_parent_dir):

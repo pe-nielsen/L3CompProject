@@ -26,7 +26,7 @@ def computeQuantities(sR):
     binWidthFactor = 0.02
     # binWidthFactor = 0.1
     dr = binWidthFactor * sR.partRad
-    rMax = 10 * sR.partRad
+    rMax = 6 * sR.partRad
 
     edges = np.arange(0.0, rMax + 1.1*dr, dr)
     numIncrements = len(edges) - 1

@@ -26,6 +26,7 @@ plt.style.use('seaborn-deep')
 plt.style.use(r'PaperDoubleFig.mplstyle')
 
 
+
 def model(tempDens):
     redTemp = tempDens[0]
     density = tempDens[1]
@@ -39,7 +40,7 @@ def model(tempDens):
 
     container = initialiseSystem(numParts, density, dim, sigma, redTemp, mode)
     equilibrateSystem(container, numEquilMoves, numEquilIter, displacement)
-    configs = evolveSystem(container, numEvolveMoves, configSampleRate)
+    configEquil, configs = evolveSystem(container, numEvolveMoves, configSampleRate)
 
     sR = simResult(container.numParts, container.sigma, well_depth, container.redTemp,
                    numEvolveMoves, container.displacement, container.mode, container.density,
@@ -58,10 +59,16 @@ def model(tempDens):
     compResultDir = join(r'compResult', f'redTemp{cR.redTemp}')
     fileDir = join(simResultDir, compResultDir)
     Path(fileDir).mkdir(parents=True, exist_ok=True)
-    filePath = join(fileDir, f'den{cR.density}')
 
+    filePath = join(fileDir, f'den{cR.density}')
     outfile = bz2.BZ2File(filePath, 'w')
     toDump = cR
+    pickle.dump(toDump, outfile)
+    outfile.close()
+
+    filePathEquilConfig = join(fileDir, f'equilConfig_d{cR.density}')
+    outfile = bz2.BZ2File(filePathEquilConfig, 'w')
+    toDump = configEquil
     pickle.dump(toDump, outfile)
     outfile.close()
 

@@ -159,7 +159,7 @@ def equilibrateSystem(container, numMoves, numEquilIter, initDisplacement):
 
 def evolveSystem(container, numMoves, configSampleRate):
     container.validMoves = 0
-    numPcfSamples = int(numMoves/configSampleRate)
+    numPcfSamples = int(np.ceil(numMoves/configSampleRate))
     displacement = container.displacement
     configEquil = container.partLocs
 
@@ -181,7 +181,7 @@ def evolveSystem(container, numMoves, configSampleRate):
           f'    mode = {container.mode}\n')
     # container.showState(plotTitle=f'3. Post-Evolution Configuration;\n'
     #                               f'n_m={numMoves:.2E}, mode={container.mode}')#, displ.={displacement}')
-    return configs
+    return configEquil, configs
 
 
 def runSim(tempDens):
@@ -216,7 +216,7 @@ def runSim(tempDens):
 
     container = initialiseSystem(numParts, density, dim, sigma, redTemp, mode)
     equilibrateSystem(container, numEquilMoves, numEquilIter, displacement)
-    configs = evolveSystem(container, numEvolveMoves, configSampleRate)
+    configEquil, configs = evolveSystem(container, numEvolveMoves, configSampleRate)
 
     sR = simResult(container.numParts, container.sigma, well_depth, container.redTemp,
                    numEvolveMoves, container.displacement, container.mode, container.density,
