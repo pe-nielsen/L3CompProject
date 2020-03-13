@@ -4,11 +4,11 @@ simResultDir = r'resultsNCC/shortRun_badConvergence'
 # densities = [3, 4, 5, 5.25, 5.5, 5.75, 6]
 # redTemps = [1, 11]
 densities = [1, 2, 3, 3.5, 4, 4.5, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2]
-redTemps = [1, 5, 10]
+redTemps = [1, 10]
 # densities=[4.5, 5, 5.5, 6]
 # redTemps=[5]
 
-numPools = 39
+numPools = 26
 
 numParts = 10**3
 dim = 3
