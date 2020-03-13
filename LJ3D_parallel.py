@@ -29,7 +29,8 @@ class Container:
 
         if mode == 'LJ':
             self.partRad = 1
-            self.length = ((numParts*np.pi)/(6*density))**(1/3)  # container length in units of sigma
+            # self.length = ((numParts*np.pi)/(6*density))**(1/3)  # container length in units of sigma
+            self.length = (numParts/density)**(1/3)
 
         # initialising some parameters
         self.partLocs = np.zeros(shape=(numParts, dim))

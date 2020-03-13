@@ -33,17 +33,19 @@ def plotCompResults(compResults, cR_parent_dir):
     fig, (axU, axP) = plt.subplots(nrows=2, ncols=1, figsize=[6.4, 8])
     axU.set(
         xlabel=r'volume fraction',
-        ylabel=r'configuration energy per particle, u'
+        ylabel=r'configuration energy per particle, u',
+        # yscale='log'
     )
     axP.set(
         xlabel=r'volume fraction',
-        ylabel=r'P-$\rho$kT'
+        ylabel=r'P-$\rho$kT',
+        # yscale='log'
     )
     axU.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
     axP.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
 
     cm1 = mcol.LinearSegmentedColormap.from_list("BlueToRed", ["b", "r"])
-    cnorm = mcol.Normalize(vmin=0, vmax=len(redTemps))  # normalising the colourmap
+    cnorm = mcol.Normalize(vmin=min(redTemps), vmax=max(redTemps))  # normalising the colourmap
     cpick = cm.ScalarMappable(norm=cnorm, cmap=cm1)  # object which maps redTemp to colour
     # cpick.set_array([])
 
@@ -71,13 +73,14 @@ def plotCompResults(compResults, cR_parent_dir):
 
         axU.plot(densities, intEns_perPart,
                  ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
-        axU.errorbar(densities, intEns_perPart, yerr=errorsIn_u,
-                     marker='', ls='', ecolor=cpick.to_rgba(rT))
+        # axU.errorbar(densities, intEns_perPart, yerr=errorsIn_u,
+        #              marker='', ls='', ecolor=cpick.to_rgba(rT))
         axP.plot(densities, pressures_minRhokT,
                  ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
-        axP.errorbar(densities, pressures_minRhokT, yerr=errorsIn_pressure,
-                     marker='', ls='', ecolor=cpick.to_rgba(rT))
+        # axP.errorbar(densities, pressures_minRhokT, yerr=errorsIn_pressure,
+        #              marker='', ls='', ecolor=cpick.to_rgba(rT))
 
+    # fig.show()
     fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=600)
     # fig.show()
 
@@ -103,7 +106,7 @@ def importCompResults(cR_parent_dir):
 if __name__ == '__main__':
     startTime = time()
 
-    cR_parent_dir = r'simulationResults/smallRunIsotherms3/compResultLargedr'
+    cR_parent_dir = r'resultsNCC/shortRun_badConvergence_redDens/compResult'
     compResults = importCompResults(cR_parent_dir)
     plotCompResults(compResults, cR_parent_dir)
 

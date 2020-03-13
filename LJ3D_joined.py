@@ -26,7 +26,6 @@ plt.style.use('seaborn-deep')
 plt.style.use(r'PaperDoubleFig.mplstyle')
 
 
-
 def model(tempDens):
     redTemp = tempDens[0]
     density = tempDens[1]
