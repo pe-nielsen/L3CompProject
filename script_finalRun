@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH -N 1
+# ^ number of nodes (16 cores per node)
+#SBATCH -c 16
+# ^ number of cores (16 per node)
+#SBATCH --mem=6g
+#SBATCH -p cpu
+#SBATCH --qos=long-cpu
+#SBATCH --job-name=finalRun1
+#SBATCH -o ./output/finalRun1.txt
+#SBATCH -t 02-12:00:00
+# ^ sets walltime DD-HH:MM:SS
+
+source /etc/profile
+python3 LJ3D_joined.py

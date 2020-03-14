@@ -89,7 +89,7 @@ def computeQuantities(sR):
 
     pi = np.pi
     intEn_perPart = ne.evaluate("2 * pi * numberDensity * intEn_sum")
-    pressure_minRhokT = ne.evaluate("(2/3) * pi * (numberDensity**2) * pressure_sum")
+    pressure_minRhokT = ne.evaluate("-(2/3) * pi * (numberDensity**2) * pressure_sum")
 
     cR.intEn_perPart = intEn_perPart
     cR.pressure_minRhokT = pressure_minRhokT

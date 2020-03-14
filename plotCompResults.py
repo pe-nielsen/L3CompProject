@@ -32,12 +32,12 @@ def plotCompResults(compResults, cR_parent_dir):
 
     fig, (axU, axP) = plt.subplots(nrows=2, ncols=1, figsize=[6.4, 8])
     axU.set(
-        xlabel=r'volume fraction',
+        xlabel=r'$\rho$*',
         ylabel=r'configuration energy per particle, u',
         # yscale='log'
     )
     axP.set(
-        xlabel=r'volume fraction',
+        xlabel=r'$\rho$*',
         ylabel=r'P-$\rho$kT',
         # yscale='log'
     )
@@ -80,7 +80,27 @@ def plotCompResults(compResults, cR_parent_dir):
         # axP.errorbar(densities, pressures_minRhokT, yerr=errorsIn_pressure,
         #              marker='', ls='', ecolor=cpick.to_rgba(rT))
 
-    # fig.show()
+
+    # ###NIST RESULTS###
+    NIST_rho = [1e-3, 3e-3, 5e-3, 7e-3, 9e-3, 7.76e-1, 7.80e-1, 8.2e-1, 8.60e-1, 9e-1]
+    NIST_T085_u = [-1.0317E-2, -3.1019E-2, -5.1901E-2, -7.2834E-2, -9.3973E-02, -5.5121E+00, -5.5386E+00, -5.7947E+00, -6.0305E+00, -6.2391E+00]
+    NIST_T085_p = [8.4402E-04, 2.4965E-03, 4.1003E-03, 5.6565E-03, 7.1641E-03, 6.7714E-03, 4.7924E-02, 5.5355E-01, 1.2660E+00, 2.2314E+00]
+    NIST_T09_u = [-9.9165E-03, -2.9787E-02, -4.9771E-02, -6.9805E-02, -8.9936E-02, -5.4689E+00, -5.4956E+00, -5.7456E+00, -5.9753E+00, -6.1773E+00]
+    NIST_T09_p = [8.9429E-04, 2.6485E-03, 4.3569E-03, 6.0193E-03, 7.6363E-03, 2.4056E-01, 2.7851E-01, 8.2386E-01, 1.5781E+00, 2.5848E+00]
+
+    axU.plot(NIST_rho, NIST_T085_u,
+             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.85))
+    axU.plot(NIST_rho, NIST_T09_u,
+             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.90))
+    axP.plot(NIST_rho, NIST_T085_p,
+             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.85))
+    axP.plot(NIST_rho, NIST_T09_p,
+             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.90))
+
+
+
+
+
     fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=600)
     # fig.show()
 
@@ -106,7 +126,7 @@ def importCompResults(cR_parent_dir):
 if __name__ == '__main__':
     startTime = time()
 
-    cR_parent_dir = r'resultsNCC/shortRun_badConvergence_redDens/compResult'
+    cR_parent_dir = r'resultsNCC/NIST_params_2/compResult'
     compResults = importCompResults(cR_parent_dir)
     plotCompResults(compResults, cR_parent_dir)
 
