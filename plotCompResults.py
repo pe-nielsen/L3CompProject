@@ -45,7 +45,7 @@ def plotCompResults(compResults, cR_parent_dir):
     axP.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
 
     cm1 = mcol.LinearSegmentedColormap.from_list("BlueToRed", ["b", "r"])
-    cnorm = mcol.Normalize(vmin=min(redTemps), vmax=max(redTemps))  # normalising the colourmap
+    cnorm = mcol.Normalize(vmin=0, vmax=max(redTemps))  # normalising the colourmap
     cpick = cm.ScalarMappable(norm=cnorm, cmap=cm1)  # object which maps redTemp to colour
     # cpick.set_array([])
 
