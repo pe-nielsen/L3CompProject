@@ -38,8 +38,20 @@ def model(tempDens):
     """)
 
     container = initialiseSystem(numParts, density, dim, sigma, redTemp, mode)
-    equilibrateSystem(container, numEquilMoves, numEquilIter, displacement)
-    configEquil, configs = evolveSystem(container, numEvolveMoves, configSampleRate)
+    configEquil = equilibrateSystem(container, numEquilMoves, numEquilIter, displacement)
+
+    # saving the equilibrated configuration
+    compResultDir = join(r'compResult', f'redTemp{redTemp}')
+    fileDir = join(simResultDir, compResultDir)
+    Path(fileDir).mkdir(parents=True, exist_ok=True)
+
+    filePathEquilConfig = join(fileDir, f'equilConfig_d{density}')
+    outfile = bz2.BZ2File(filePathEquilConfig, 'w')
+    toDump = configEquil
+    pickle.dump(toDump, outfile)
+    outfile.close()
+
+    configEquilDEPRICATED, configs = evolveSystem(container, numEvolveMoves, configSampleRate)
 
     sR = simResult(container.numParts, container.sigma, well_depth, container.redTemp,
                    numEvolveMoves, container.displacement, container.mode, container.density,
@@ -54,22 +66,14 @@ def model(tempDens):
 
     cR = computeQuantities(sR)
 
-    # saving the computation result
-    compResultDir = join(r'compResult', f'redTemp{cR.redTemp}')
-    fileDir = join(simResultDir, compResultDir)
-    Path(fileDir).mkdir(parents=True, exist_ok=True)
-
+    # saving computation results
     filePath = join(fileDir, f'den{cR.density}')
     outfile = bz2.BZ2File(filePath, 'w')
     toDump = cR
     pickle.dump(toDump, outfile)
     outfile.close()
 
-    filePathEquilConfig = join(fileDir, f'equilConfig_d{cR.density}')
-    outfile = bz2.BZ2File(filePathEquilConfig, 'w')
-    toDump = configEquil
-    pickle.dump(toDump, outfile)
-    outfile.close()
+
 
     print(f"""
         Computation completed and saved for:

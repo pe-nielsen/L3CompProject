@@ -157,6 +157,8 @@ def equilibrateSystem(container, numMoves, numEquilIter, initDisplacement):
           f'    redTemp: {container.redTemp},\n'
           f'    density: {container.density}\n')
 
+    return container.partLocs
+
 
 def evolveSystem(container, numMoves, configSampleRate):
     container.validMoves = 0
