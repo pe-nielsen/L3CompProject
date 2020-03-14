@@ -4,15 +4,15 @@ simResultDir = r'resultsNCC/finalRun'
 # densities = [1e-3, 3e-3, 5e-3, 7e-3, 9e-3, 7.76e-1, 7.80e-1, 8.2e-1, 8.60e-1, 9e-1]
 # redTemps = [0.85, 0.9]
 
-# finalRun1
+# # finalRun1
 densities = [0.001, 0.005, 0.01, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.5, 0.8, 0.825, 0.85, 0.875, 0.9]
 redTemps = [1]
 
 # # finalRun2
 # densities = [0.001, 0.005, 0.01, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.5, 0.8, 0.825, 0.85, 0.875, 0.9]
 # redTemps = [5]
-#
-# # finalRun3
+
+# finalRun3
 # densities = [0.001, 0.005, 0.01, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.5, 0.8, 0.825, 0.85, 0.875, 0.9]
 # redTemps = [10]
 

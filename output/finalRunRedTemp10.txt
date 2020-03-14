@@ -1,0 +1,9 @@
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(LJ3D_joined.py:15879): Gdk-CRITICAL **: 11:23:24.210: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+Started at: ---18335 days, 11:23:24.245940---
+slurmstepd-cpu2: error: Job 40447 exceeded memory limit (6376904 > 6291456), being killed
+slurmstepd-cpu2: error: Exceeded job memory limit
+slurmstepd-cpu2: error: *** JOB 40447 ON cpu2 CANCELLED AT 2020-03-14T21:49:23 ***
+slurmstepd-cpu2: error: Step 40447.4294967294 hit memory limit at least once during execution. This may or may not result in some failure.

@@ -1,0 +1,8 @@
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(LJ3D_joined.py:1027): Gdk-CRITICAL **: 11:21:37.318: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+Started at: ---18335 days, 11:21:37.455656---
+slurmstepd-cpu1: error: Job 40445 exceeded memory limit (6528852 > 6291456), being killed
+slurmstepd-cpu1: error: Exceeded job memory limit
+slurmstepd-cpu1: error: *** JOB 40445 ON cpu1 CANCELLED AT 2020-03-14T21:48:05 ***

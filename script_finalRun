@@ -3,11 +3,11 @@
 # ^ number of nodes (16 cores per node)
 #SBATCH -c 16
 # ^ number of cores (16 per node)
-#SBATCH --mem=6g
+#SBATCH --mem=12g
 #SBATCH -p cpu
 #SBATCH --qos=long-cpu
-#SBATCH --job-name=finalRun1
-#SBATCH -o ./output/finalRun1.txt
+#SBATCH --job-name=finalRunRedTemp1
+#SBATCH -o ./output/finalRunRedTemp1.txt
 #SBATCH -t 02-12:00:00
 # ^ sets walltime DD-HH:MM:SS
 

@@ -1,0 +1,6 @@
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(LJ3D_joined.py:1583): Gdk-CRITICAL **: 11:22:42.064: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+Started at: ---18335 days, 11:22:42.107135---
+slurmstepd-cpu1: error: *** JOB 40446 ON cpu1 CANCELLED AT 2020-03-14T21:55:06 ***
