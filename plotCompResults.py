@@ -64,12 +64,17 @@ def plotCompResults(compResults, cR_parent_dir):
                 pressures_minRhokT.append(cR.pressure_minRhokT)
                 densities.append(cR.density)
                 numberDensity = cR.numParts/(cR.containerLength**3)
-                print(f'at den {cR.density}, redTemp {cR.redTemp}: number density: {numberDensity}')
+
                 numberDensities.append(numberDensity)
 
                 sum_ErrorGiSq = np.sum(cR.PCFstdev**2)
                 errorsIn_u.append(2*np.pi*numberDensity*sum_ErrorGiSq)
                 errorsIn_pressure.append((2*np.pi/3)*(numberDensity**2)*sum_ErrorGiSq)
+                print(f'at redTemp {cR.redTemp}, den {cR.density}:\n'
+                      f'    U*: {cR.intEn_perPart}\n'
+                      f'    +/-: {2*np.pi*numberDensity*sum_ErrorGiSq}\n'
+                      f'    p*: {cR.pressure_minRhokT}\n'
+                      f'    +/-: {(2*np.pi/3)*(numberDensity**2)*sum_ErrorGiSq}\n')
 
         axU.plot(densities, intEns_perPart,
                  ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))

@@ -1,7 +1,16 @@
 simResultDir = r'resultsNCC/NIST_params_3'
+# simResultDir = r'simulationResults/debugRun2'
+
+# densities = [3, 4, 5, 5.25, 5.5, 5.75, 6]
+# redTemps = [1, 11]
+# densities = [1, 2, 3, 3.5, 4, 4.5, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2]
+# redTemps = [1, 10]
+# densities=[4.5, 5, 5.5, 6]
+# redTemps=[5]
 
 densities = [1e-3, 3e-3, 5e-3, 7e-3, 9e-3, 7.76e-1, 7.80e-1, 8.2e-1, 8.60e-1, 9e-1]
 redTemps = [0.85, 0.9]
+
 
 numPools = 20
 
