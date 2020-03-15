@@ -80,6 +80,7 @@ def computeQuantities(sR):
 
     PCF = cR.PCF
     PCFradii = cR.PCFradii
+    PCFERRORin = cR.PCFstdev
 
     intEn_is = ne.evaluate("LJpotns * PCF * (PCFradii ** 2) * dr")  # array of internal energy sum terms at PCF radii
     pressure_is = ne.evaluate("diff_LJpotns * PCF * (PCFradii ** 3) * dr")  # array of pressure terms at PCF radii
@@ -91,8 +92,24 @@ def computeQuantities(sR):
     intEn_perPart = ne.evaluate("2 * pi * numberDensity * intEn_sum")
     pressure_minRhokT = ne.evaluate("-(2/3) * pi * (numberDensity**2) * pressure_sum")
 
+    # error from standard deviation
+    stdev_intEn = 2*np.pi*numberDensity*np.std(intEn_is)
+    stdev_pressure = (2/3) * pi * (numberDensity**2) * np.std(pressure_is)
+
+
+    # intEn_isERRORinSq = ne.evaluate("(LJpotns * PCFERRORin * (PCFradii ** 2) * dr)**2")
+    # pressure_isERRORinSq = ne.evaluate("(diff_LJpotns * PCFERRORin * (PCFradii ** 3) * dr)**2")
+
+    # intEn_sumERRORin = intEn_isERRORinSq.sum()
+    # pressure_sumERRORin = pressure_isERRORinSq.sum()
+
+    # intEn_perPartERRORin = ne.evaluate("2 * pi * numberDensity * intEn_sumERRORin")
+    # pressure_minRhokTERRORin = ne.evaluate("-(2/3) * pi * (numberDensity**2) * pressure_sum")
+
     cR.intEn_perPart = intEn_perPart
     cR.pressure_minRhokT = pressure_minRhokT
+    cR.intEnstdev = stdev_intEn
+    cR.pressurestdev = stdev_pressure
     print(f'\nfor density = {sR.density},\n'
           f'internal energy per particle: {intEn_perPart},\n'
           f'P - rho.kT = {pressure_minRhokT}\n')

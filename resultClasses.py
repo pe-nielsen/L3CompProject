@@ -34,3 +34,7 @@ class compResult:
 
         self.intEn_perPart = 0
         self.pressure_minRhokT = 0
+
+        # these two might cause incompatibility for all older versions without them
+        self.intEnstdev = 0
+        self. pressurestdev = 0

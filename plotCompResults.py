@@ -45,7 +45,7 @@ def plotCompResults(compResults, cR_parent_dir):
     axP.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
 
     cm1 = mcol.LinearSegmentedColormap.from_list("BlueToRed", ["b", "r"])
-    cnorm = mcol.Normalize(vmin=0, vmax=max(redTemps))  # normalising the colourmap
+    cnorm = mcol.Normalize(vmin=min(redTemps), vmax=max(redTemps))  # normalising the colourmap
     cpick = cm.ScalarMappable(norm=cnorm, cmap=cm1)  # object which maps redTemp to colour
     # cpick.set_array([])
 
@@ -67,14 +67,14 @@ def plotCompResults(compResults, cR_parent_dir):
 
                 numberDensities.append(numberDensity)
 
-                sum_ErrorGiSq = np.sum(cR.PCFstdev**2)
-                errorsIn_u.append(2*np.pi*numberDensity*sum_ErrorGiSq)
-                errorsIn_pressure.append((2*np.pi/3)*(numberDensity**2)*sum_ErrorGiSq)
+                # sum_ErrorGiSq = np.sum(cR.PCFstdev**2)
+                errorsIn_u.append(cR.intEnstdev)
+                errorsIn_pressure.append(cR.pressurestdev)
                 print(f'at redTemp {cR.redTemp}, den {cR.density}:\n'
                       f'    U*: {cR.intEn_perPart}\n'
-                      f'    +/-: {2*np.pi*numberDensity*sum_ErrorGiSq}\n'
+                      f'    +/-: {cR.intEnstdev}\n'
                       f'    p*: {cR.pressure_minRhokT}\n'
-                      f'    +/-: {(2*np.pi/3)*(numberDensity**2)*sum_ErrorGiSq}\n')
+                      f'    +/-: {cR.pressurestdev}\n')
 
         axU.plot(densities, intEns_perPart,
                  ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
@@ -94,20 +94,20 @@ def plotCompResults(compResults, cR_parent_dir):
     NIST_T09_p = [8.9429E-04, 2.6485E-03, 4.3569E-03, 6.0193E-03, 7.6363E-03, 2.4056E-01, 2.7851E-01, 8.2386E-01, 1.5781E+00, 2.5848E+00]
 
     axU.plot(NIST_rho, NIST_T085_u,
-             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.85))
+             ls='', marker='o', ms=4, lw=1, color='dodgerblue')
     axU.plot(NIST_rho, NIST_T09_u,
-             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.90))
+             ls='', marker='o', ms=4, lw=1, color='crimson')
     axP.plot(NIST_rho, NIST_T085_p,
-             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.85))
+             ls='', marker='o', ms=4, lw=1, color='dodgerblue')
     axP.plot(NIST_rho, NIST_T09_p,
-             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.90))
+             ls='', marker='o', ms=4, lw=1, color='crimson')
 
 
 
 
 
     fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=600)
-    # fig.show()
+    fig.show()
 
 def importCompResults(cR_parent_dir):
     compResults = []
