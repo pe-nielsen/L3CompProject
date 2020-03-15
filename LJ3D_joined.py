@@ -45,7 +45,7 @@ def model(tempDens):
     fileDir = join(simResultDir, compResultDir)
     Path(fileDir).mkdir(parents=True, exist_ok=True)
 
-    filePathEquilConfig = join(fileDir, f'equilConfig_d{density}')
+    filePathEquilConfig = join(fileDir, f'equilConfig_T{redTemp}_d{density}')
     outfile = bz2.BZ2File(filePathEquilConfig, 'w')
     toDump = configEquil
     pickle.dump(toDump, outfile)
