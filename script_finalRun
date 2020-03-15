@@ -6,8 +6,8 @@
 #SBATCH --mem=12g
 #SBATCH -p cpu
 #SBATCH --qos=long-cpu
-#SBATCH --job-name=finalRunRedTemp1
-#SBATCH -o ./output/finalRunRedTemp1.txt
+#SBATCH --job-name=finalRunRedTemp10
+#SBATCH -o ./output/finalRunRedTemp10.txt
 #SBATCH -t 02-12:00:00
 # ^ sets walltime DD-HH:MM:SS
 
