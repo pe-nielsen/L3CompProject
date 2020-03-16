@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH -N 2
+# ^ number of nodes (16 cores per node)
+#SBATCH -c 16
+# ^ number of cores (16 per node)
+#SBATCH --mem=16g
+#SBATCH -p cpu
+#SBATCH --qos=long-cpu
+#SBATCH --job-name=NISTreRun
+#SBATCH -o ./output/NISTreRun.txt
+#SBATCH -t 01-12:00:00
+# ^ sets walltime DD-HH:MM:SS
+
+source /etc/profile
+python3 LJ3D_joined.py

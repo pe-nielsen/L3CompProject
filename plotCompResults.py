@@ -107,7 +107,7 @@ def plotCompResults(compResults, cR_parent_dir):
 
 
     fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=600)
-    fig.show()
+#    fig.show()
 
 def importCompResults(cR_parent_dir):
     compResults = []

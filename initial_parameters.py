@@ -19,4 +19,4 @@ numEvolveMoves = int(1.5e7)
 
 numEquilIter = 1000
 initDisplacement = 0.1
-configSampleRate = 1000
+configSampleRate = 2000
