@@ -59,6 +59,7 @@ labelfont=bf]{caption}                      % Defines caption font size as 9pt a
 	\cmidrulekern=.5em
 	\defaultaddspace=.5em
 }
+\renewcommand{\arraystretch}{1.2}
 
 
 %%%%% Document %%%%%
@@ -111,7 +112,7 @@ The number of particles in the system was kept constant for every initial config
 Virial equation and configuration energy per particle
 
 
-The model and method were verified by direct comparison to Monte Carlo results at liquid and vapour-like densities along isotherms $T^{*}=0.85, 0.90$ published by United States' National Institute of Standard and Technology (NIST). NIST's results were for 500 particles whose Lennard-Jones interaction had been truncated to $3\sigma{}$ and standard long range corrections had been applied. Their systems were equilibrated for $5.0\text{e}7$ moves and quantities calculated over $2.5\text{e}8$ moves. Figure \ref{fig:NIST_comparison} shows the configuration energy per particle, $u^*$, and virial pressure, $p^{*} = P - \rho{}kT$ for both our system and NIST's. Our results were obtained as described in section \ref{s:methods}.
+The model and method were verified by direct comparison to Monte Carlo results at liquid and vapour-like densities along isotherms $T^{*}=0.85, 0.90$ published by United States' National Institute of Standard and Technology (NIST). NIST's results were for 500 particles whose Lennard-Jones interaction had been truncated to $3\sigma{}$ and standard long range corrections had been applied. Their systems were equilibrated for $5.0\text{e}7$ moves and quantities calculated over $2.5\text{e}8$ moves. Figure \ref{fig:NIST_comparison} shows the configuration energy per particle, $u^*$, and virial pressure, $p^{*} = P - \rho{}kT$ for both our system and NIST's. Our results were obtained as described in section \ref{s:methods}. See appendix \ref{a:NIST} for the values and their associated uncertainties of NIST's and our simulations.
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{figures/NISTcomparison.png}
@@ -150,32 +151,33 @@ All propagation of errors is performed as outlined in \cite{errors}.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
+% \usepackage{multirow}
 % \usepackage{graphicx}
 \begin{table}[]
 	\resizebox{\textwidth}{!}{%
-		\begin{tabular}{@{}llllllllll@{}}
+		\begin{tabular}{@{}rrrrrrrrrr@{}}
 			\toprule
-			$T^*$    & $\rho{}^*$ & $U_\text{NIST}^*$ & $\pm$    & $U*$ & $\pm$ & $p_\text{NIST}^*$ & $\pm$    & $p^*$ & $\pm$ \\ \midrule
-			8.50E-01 & 1.00E-03   & -1.0317E-02       & 2.34E-05 &      &       & 8.4402E-04        & 4.66E-08 &       &       \\
-			8.50E-01 & 3.00E-03   & -3.1019E-02       & 5.91E-05 &      &       & 2.4965E-03        & 4.99E-07 &       &       \\
-			8.50E-01 & 5.00E-03   & -5.1901E-02       & 7.53E-05 &      &       & 4.1003E-03        & 5.05E-07 &       &       \\ 
-			8.50E-01 & 7.00E-03   & -7.2834E-02       & 1.34E-04 &      &       & 5.6565E-03        & 7.96E-07 &       &       \\
-			8.50E-01 & 9.00E-03   & -9.3973E-02       & 1.29E-04 &      &       & 7.1641E-03        & 2.24E-06 &       &       \\
-			8.50E-01 & 7.76E-01   & -5.5121E+00       & 4.55E-04 &      &       & 6.7714E-03        & 1.77E-03 &       &       \\
-			8.50E-01 & 7.80E-01   & -5.5386E+00       & 7.26E-04 &      &       & 4.7924E-02        & 3.18E-03 &       &       \\
-			8.50E-01 & 8.20E-01   & -5.7947E+00       & 6.03E-04 &      &       & 5.5355E-01        & 4.13E-03 &       &       \\
-			8.50E-01 & 8.60E-01   & -6.0305E+00       & 2.38E-03 &      &       & 1.2660E+00        & 1.36E-02 &       &       \\
-			8.50E-01 & 9.00E-01   & -6.2391E+00       & 5.27E-03 &      &       & 2.2314E+00        & 2.72E-02 &       &       \\ \midrule
-			9.00E-01 & 1.00E-03   & -9.9165E-03       & 1.89E-05 &      &       & 8.9429E-04        & 2.48E-08 &       &       \\
-			9.00E-01 & 3.00E-03   & -2.9787E-02       & 3.21E-05 &      &       & 2.6485E-03        & 2.54E-07 &       &       \\
-			9.00E-01 & 5.00E-03   & -4.9771E-02       & 3.80E-05 &      &       & 4.3569E-03        & 2.19E-07 &       &       \\
-			9.00E-01 & 7.00E-03   & -6.9805E-02       & 7.66E-05 &      &       & 6.0193E-03        & 1.02E-06 &       &       \\
-			9.00E-01 & 9.00E-03   & -8.9936E-02       & 2.44E-05 &      &       & 7.6363E-03        & 1.44E-06 &       &       \\
-			9.00E-01 & 7.76E-01   & -5.4689E+00       & 4.20E-04 &      &       & 2.4056E-01        & 2.74E-03 &       &       \\
-			9.00E-01 & 7.80E-01   & -5.4956E+00       & 7.86E-04 &      &       & 2.7851E-01        & 2.97E-03 &       &       \\
-			9.00E-01 & 8.20E-01   & -5.7456E+00       & 7.51E-04 &      &       & 8.2386E-01        & 2.85E-03 &       &       \\
-			9.00E-01 & 8.60E-01   & -5.9753E+00       & 5.53E-04 &      &       & 1.5781E+00        & 3.29E-03 &       &       \\
-			9.00E-01 & 9.00E-01   & -6.1773E+00       & 1.57E-03 &      &       & 2.5848E+00        & 9.54E-03 &       &       \\ \bottomrule
+			$T^*$                  & $\rho{}^*$ & $U_\text{NIST}^*$ & $\pm$    & $U_\text{ours}^*$ & $\pm$   & $p_\text{NIST}^*$ & $\pm$    & $p_\text{ours}^*$ & $\pm$   \\ \midrule
+			\multirow{10}{*}{0.85} & 1.00E-3    & -1.0317E-2       & 2.34E-5 & -9.968E-3         & 9.17E-5 & 8.4402E-4        & 4.66E-8 & -5.288E-6         & 1.72E-7 \\
+			& 3.00E-3    & -3.1019E-2       & 5.91E-5 & -3.156E-2         & 2.87E-4 & 2.4965E-3        & 4.99E-7 & -6.121E-5         & 1.48E-6 \\
+			& 5.00E-3   & -5.1901E-2       & 7.53E-5 & -5.485E-2         & 5.07E-4 & 4.1003E-3        & 5.05E-7 & -1.472E-4         & 4.75E-6 \\
+			& 7.00E-3   & -7.2834E-2       & 1.34E-4 & -7.499E-2         & 6.87E-4 & 5.6565E-3        & 7.96E-7 & -2.854E-4         & 8.98E-6 \\
+			& 9.00E-3   & -9.3973E-2       & 1.29E-4 & -9.863E-2         & 9.18E-4 & 7.1641E-3        & 2.24E-6 & -4.568E-4         & 1.51E-5 \\
+			& 7.76E-1   & -5.5121       & 4.55E-4 & -5.623            & 5.21E-2 & 6.7714E-3        & 1.77E-3 & -5.577E-1         & 9.91E-2 \\
+			& 7.80E-1   & -5.5386       & 7.26E-4 & -5.611            & 5.14E-2 & 4.7924E-2        & 3.18E-3 & -6.311E-1         & 9.88E-2 \\
+			& 8.20E-1   & -5.7947       & 6.03E-4 & -5.908            & 5.59E-2 & 5.5355E-1        & 4.13E-3 & 2.588E-1          & 1.25E-1 \\
+			& 8.60E-1   & -6.0305       & 2.38E-3 & -6.175            & 5.87E-2 & 1.2660        & 1.36E-2 & 4.973E-1          & 1.41E-1 \\
+			& 9.00E-1   & -6.2391       & 5.27E-3 & -6.346            & 6.17E-2 & 2.2314        & 2.72E-2 & 1.823             & 1.75E-1 \\ \cmidrule(lr){1-10}
+			\multirow{10}{*}{0.90} & 1.00E-3   & -9.9165E-3       & 1.89E-5 & -9.989E-3         & 9.05E-5 & 8.9429E-4        & 2.48E-8 & -6.475E-6         & 1.76E-7 \\
+			& 3.00E-3   & -2.9787E-2       & 3.21E-5 & -3.065E-2         & 2.79E-4 & 2.6485E-3        & 2.54E-7 & -4.368E-5         & 1.70E-6 \\
+			& 5.00E-3   & -4.9771E-2       & 3.80E-5 & -5.226E-2         & 4.75E-4 & 4.3569E-3        & 2.19E-7 & -1.426E-4         & 4.35E-6 \\
+			& 7.00E-3   & -6.9805E-2       & 7.66E-5 & 7.179E-2          & 6.50E-4 & 6.0193E-3        & 1.02E-6 & -3.075E-4         & 8.14E-6 \\
+			& 9.00E-3   & -8.9936E-2       & 2.44E-5 & -9.151E-2         & 8.33E-4 & 7.6363E-3        & 1.44E-6 & -4.295E-4         & 1.41E-5 \\
+			& 7.76E-1   & -5.4689       & 4.20E-4 & -5.615            & 5.21E-2 & 2.4056E-1        & 2.74E-3 & -2.486E-1         & 1.04E-1 \\
+			& 7.80E-1   & -5.4956       & 7.86E-4 & -5.627            & 5.20E-2 & 2.7851E-1        & 2.97E-3 & -2.576E-1         & 1.06E-1 \\
+			& 8.20E-1   & -5.7456       & 7.51E-4 & -5.870            & 5.53E-2 & 8.2386E-1        & 2.85E-3 & 2.921E-1          & 1.25E-1 \\
+			& 8.60E-1   & -5.9753       & 5.53E-4 & -6.130            & 5.89E-2 & 1.5781        & 3.29E-3 & 1.193             & 1.53E-1 \\
+			& 9.00E-1   & -6.1773       & 1.57E-3 & -6.312            & 6.14E-2 & 2.5848        & 9.54E-3 & 1.871             & 1.75E-1 \\ \bottomrule
 		\end{tabular}%
 	}
 \end{table}
