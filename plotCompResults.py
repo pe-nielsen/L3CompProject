@@ -34,12 +34,14 @@ def plotCompResults(compResults, cR_parent_dir):
     axU.set(
         xlabel=r'$\rho$*',
         ylabel=r'configuration energy per particle, u',
-        # yscale='log'
+        # yscale='log',
+        xscale='log',
     )
     axP.set(
         xlabel=r'$\rho$*',
         ylabel=r'P-$\rho$kT',
-        # yscale='log'
+        # yscale='log',
+        xscale='log',
     )
     axU.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
     axP.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
@@ -68,19 +70,20 @@ def plotCompResults(compResults, cR_parent_dir):
                 numberDensities.append(numberDensity)
 
                 # sum_ErrorGiSq = np.sum(cR.PCFstdev**2)
-                errorsIn_u.append(cR.intEnstdev)
-                errorsIn_pressure.append(cR.pressurestdev)
+                # errorsIn_u.append(cR.intEnstdev)
+                # errorsIn_pressure.append(cR.pressurestdev)
                 print(f'at redTemp {cR.redTemp}, den {cR.density}:\n'
                       f'    U*: {cR.intEn_perPart}\n'
-                      f'    +/-: {cR.intEnstdev}\n'
+                      # f'    +/-: {cR.intEnstdev}\n'
                       f'    p*: {cR.pressure_minRhokT}\n'
-                      f'    +/-: {cR.pressurestdev}\n')
+                      # f'    +/-: {cR.pressurestdev}\n'
+                      )
 
         axU.plot(densities, intEns_perPart,
                  ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
         # axU.errorbar(densities, intEns_perPart, yerr=errorsIn_u,
         #              marker='', ls='', ecolor=cpick.to_rgba(rT))
-        axP.plot(densities, pressures_minRhokT,
+        axP.plot(densities, [-l for l in pressures_minRhokT],
                  ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
         # axP.errorbar(densities, pressures_minRhokT, yerr=errorsIn_pressure,
         #              marker='', ls='', ecolor=cpick.to_rgba(rT))
@@ -94,13 +97,13 @@ def plotCompResults(compResults, cR_parent_dir):
     NIST_T09_p = [8.9429E-04, 2.6485E-03, 4.3569E-03, 6.0193E-03, 7.6363E-03, 2.4056E-01, 2.7851E-01, 8.2386E-01, 1.5781E+00, 2.5848E+00]
 
     axU.plot(NIST_rho, NIST_T085_u,
-             ls='', marker='o', ms=4, lw=1, color='dodgerblue')
+             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.85))
     axU.plot(NIST_rho, NIST_T09_u,
-             ls='', marker='o', ms=4, lw=1, color='crimson')
+             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.90))
     axP.plot(NIST_rho, NIST_T085_p,
-             ls='', marker='o', ms=4, lw=1, color='dodgerblue')
+             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.85))
     axP.plot(NIST_rho, NIST_T09_p,
-             ls='', marker='o', ms=4, lw=1, color='crimson')
+             ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.90))
 
 
 

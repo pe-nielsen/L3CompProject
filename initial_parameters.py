@@ -1,4 +1,4 @@
-simResultDir = r'resultsNCC/NIST_params_3'
+simResultDir = r'resultsNCC/NIST_params_2'
 
 densities = [1e-3, 3e-3, 5e-3, 7e-3, 9e-3, 7.76e-1, 7.80e-1, 8.2e-1, 8.60e-1, 9e-1]
 redTemps = [0.85, 0.9]
