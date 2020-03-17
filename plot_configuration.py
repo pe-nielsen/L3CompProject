@@ -78,7 +78,7 @@ def importResult(filepath):
 if __name__ == '__main__':
     startTime = time()
 
-    cR_filepath = r'resultsNCC\longRun1\compResult\redTemp5\den6'
+    cR_filepath = r'resultsNCC/dataCollection/compResult/redTemp10/den0.1'
     # sR_filepath = r'C:\Users\Peter Nielsen\Documents\l3\comp_proj\simulationResults\testRun\simResult_den75'
 
     cR = importResult(cR_filepath)

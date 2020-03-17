@@ -80,9 +80,9 @@ def plotCompResults(compResults, cR_parent_dir):
                 #       )
 
         axU.plot(densities, intEns_perPart,
-                 ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
+                 ls='', marker='.', ms=4, lw=1, color=cpick.to_rgba(rT))
         axP.plot(densities, pressures_minRhokT,
-                 ls='', marker='x', ms=4, lw=1, color=cpick.to_rgba(rT))
+                 ls='', marker='.', ms=4, lw=1, color=cpick.to_rgba(rT))
 
         axU.errorbar(densities, intEns_perPart, yerr=errorsIn_u,
                      marker='', ls='', lw=1, ecolor=cpick.to_rgba(rT), capsize=2)
@@ -106,7 +106,7 @@ def plotCompResults(compResults, cR_parent_dir):
     # axP.plot(NIST_rho, NIST_T09_p,
     #          ls='', marker='o', ms=4, lw=1, color=cpick.to_rgba(0.90))
 
-    fig.savefig(join(cR_parent_dir, r'result.png'), format='png', dpi=300)
+    fig.savefig(join(cR_parent_dir, r'result2.png'), format='png', dpi=300)
     # fig.show()
 
 def importCompResults(cR_parent_dir):
