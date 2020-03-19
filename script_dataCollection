@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH -N 2
+#SBATCH -N 1
 # ^ number of nodes (16 cores per node)
 #SBATCH -c 16
 # ^ number of cores (16 per node)
 #SBATCH --mem=12g
 #SBATCH -p cpu
 #SBATCH --qos=long-cpu
-#SBATCH --job-name=LJ_dC2FullRange
-#SBATCH -o ./output/dC2FullRange.txt
+#SBATCH --job-name=LJ_dC2HighDensities
+#SBATCH -o ./output/dC2HighDensities.txt
 #SBATCH -t 02-12:00:00
 # ^ sets walltime DD-HH:MM:SS
 
