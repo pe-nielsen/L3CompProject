@@ -14,7 +14,7 @@ from commonFunctions import getDistanceSquared, redLJ
 from initial_parameters import simResultDir
 import numpy as np
 import numexpr as ne
-np.random.seed(1)
+# np.random.seed(1)
 
 
 class Container:

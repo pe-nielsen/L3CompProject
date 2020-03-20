@@ -21,7 +21,7 @@ import bz2
 import numpy as np
 import numexpr as ne
 
-np.random.seed(0)
+# np.random.seed(0)
 plt.style.use('seaborn-deep')
 plt.style.use(r'PaperDoubleFig.mplstyle')
 

@@ -131,7 +131,7 @@ def importCompResults(cR_parent_dir):
 if __name__ == '__main__':
     startTime = time()
 
-    cR_parent_dir = r'resultsNCC/NIST_params_3/compResult'
+    cR_parent_dir = r'resultsNCC\dataCollection2\compResult'
     compResults = importCompResults(cR_parent_dir)
     plotCompResults(compResults, cR_parent_dir)
 

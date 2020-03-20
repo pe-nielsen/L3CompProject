@@ -125,6 +125,21 @@ The model and method were verified by direct comparison to Monte Carlo results a
 \section{Results} \label{s:results}
 %\lipsum[1-10]
 
+The resulting reduced pressure and configuration energies as functions of the reduced density are shown in figures \ref{fig:finalResults} (and...) respectively. Configuration energy can be seen to reduce from approximately $0$ at $\rho{}^*=0$ before reaching some local minimum value and increasing. The value of $\rho{}^*$ at which this local minima is reached appears to vary as a function of the system temperature; the absolute value of the minima is decreased and occurs at smaller $\rho{}^*$ at higher temperatures when compared to that of lower temperatures.
+
+Interpretation - at lower densities we are essentially considering an ideal gas; compare to total energy u-config + u-kinetic
+
+Reduced pressure can be seen to increase *exponentially* from approximately $0$ at $\rho{}^*=0$ with increasing $\rho{}^*$. The rate of increase can be seen to be greater at higher than lower temperatures.
+
+
+At very low $\rho{}^*$ the system temperature is observed to have little impact on the configuration energy or pressure. However at larger $\rho{}^*$ the difference between systems of different temperatures increases.
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{figures/finalResults1.png}
+	\caption{Configuration energy per particle, $u^*$, and virial pressure, $p^{*} = P - \rho{}kT$ for NIST data (dots) and our model (crosses). The blue and red data are along isotherms $T^{*} = 0.85, 0.90$ respectively.}
+	\label{fig:finalResults}
+\end{figure}
+
 \section{Discussion} \label{s:analysis}
 %\lipsum[1-15]
 
@@ -160,7 +175,7 @@ All propagation of errors is performed as outlined in \cite{errors}.
 			$T^*$                  & $\rho{}^*$ & $U_\text{NIST}^*$ & $\pm$    & $U_\text{ours}^*$ & $\pm$   & $p_\text{NIST}^*$ & $\pm$    & $p_\text{ours}^*$ & $\pm$   \\ \midrule
 			\multirow{10}{*}{0.85} & 1.00E-3    & -1.0317E-2       & 2.34E-5 & -9.968E-3         & 9.17E-5 & 8.4402E-4        & 4.66E-8 & -5.288E-6         & 1.72E-7 \\
 			& 3.00E-3    & -3.1019E-2       & 5.91E-5 & -3.156E-2         & 2.87E-4 & 2.4965E-3        & 4.99E-7 & -6.121E-5         & 1.48E-6 \\
-			& 5.00E-3   & -5.1901E-2       & 7.53E-5 & -5.485E-2         & 5.07E-4 & 4.1003E-3        & 5.05E-7 & -1.472E-4         & 4.75E-6 \\
+			& 5.00E-3   & -5.1901E-2       & 7.53E-5 & -5.485E-2         & 5 .07E-4 & 4.1003E-3        & 5.05E-7 & -1.472E-4         & 4.75E-6 \\
 			& 7.00E-3   & -7.2834E-2       & 1.34E-4 & -7.499E-2         & 6.87E-4 & 5.6565E-3        & 7.96E-7 & -2.854E-4         & 8.98E-6 \\
 			& 9.00E-3   & -9.3973E-2       & 1.29E-4 & -9.863E-2         & 9.18E-4 & 7.1641E-3        & 2.24E-6 & -4.568E-4         & 1.51E-5 \\
 			& 7.76E-1   & -5.5121       & 4.55E-4 & -5.623            & 5.21E-2 & 6.7714E-3        & 1.77E-3 & -5.577E-1         & 9.91E-2 \\
