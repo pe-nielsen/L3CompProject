@@ -1,4 +1,4 @@
-simResultDir = r'resultsNCC/dataCollection_lowTemp'
+simResultDir = r'resultsNCC/dataCollection3'
 
 # densities = [1e-3, 3e-3, 5e-3, 7e-3, 9e-3, 7.76e-1, 7.80e-1, 8.2e-1, 8.60e-1, 9e-1]
 # redTemps = [0.85, 0.9]
@@ -9,17 +9,13 @@ simResultDir = r'resultsNCC/dataCollection_lowTemp'
 #numPools = 30
 
 #####
-#densities = [0.1, 0.2, 0.3 ,0.4 ,0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
-#redTemps = [1]
+densities = [0.1, 0.2, 0.3 ,0.4 ,0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
+redTemps = [1]
 #redTemps = [2]
 #redTemps = [3]
 #redTemps = [5]
 #redTemps = [10]
-
-densities = [0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.55, 0.575, 0.6, 0.625, 0.65, 0.7, 0.8, 0.9, 1.0]
-#redTemps = [0.75, 1.00]
-redTemps = [1.25, 1.50]
-numPools = 32
+numPools = 15
 
 
 
@@ -53,8 +49,8 @@ well_depth = 1.65e-21
 Boltzmann_const = 1.38064852e-23  # m^2.kg.s^-2.K-1
 
 numEquilMoves = int(2e7)
-numEvolveMoves = int(2e7)
+numEvolveMoves = int(5e7)
 
 numEquilIter = 1000
 initDisplacement = 0.1
-configSampleRate = 2000
+configSampleRate = 5000

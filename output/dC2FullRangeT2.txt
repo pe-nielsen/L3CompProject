@@ -1,0 +1,247 @@
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(LJ3D_joined.py:23401): Gdk-CRITICAL **: 23:01:29.346: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+Started at: ---18340 days, 23:01:29.389905---
+
+    current density: 1.3
+    current redTemp: 2
+    
+Equilibration completed:
+    final displacement: 0.07350918906249998,
+    acceptance: 0.3402493,
+    redTemp: 2,
+    density: 1.3
+
+
+System evolved:
+    num moves = 5.00E+07
+    density = 1.3
+    total acceptance = 0.3602198
+    final displacement = 0.07350918906249998
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 1.3,
+    redTemp: 2,
+    at time: ---18341 days, 23:23:37.962671---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 1.3,
+internal energy per particle: -3.2000931313972156,
+P - rho.kT = 53.42500355599938
+
+
+        Computation completed and saved for:
+        density: 1.3,
+        redTemp: 2,
+        at time: ---18342 days, 0:21:14.147468---''',
+        
+
+    current density: 1.2
+    current redTemp: 2
+    
+Equilibration completed:
+    final displacement: 0.0857375,
+    acceptance: 0.34543425,
+    redTemp: 2,
+    density: 1.2
+
+
+System evolved:
+    num moves = 5.00E+07
+    density = 1.2
+    total acceptance = 0.34536244
+    final displacement = 0.0857375
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 1.2,
+    redTemp: 2,
+    at time: ---18341 days, 23:26:47.164811---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 1.2,
+internal energy per particle: -3.772690176506507,
+P - rho.kT = 38.13011338111201
+
+
+        Computation completed and saved for:
+        density: 1.2,
+        redTemp: 2,
+        at time: ---18342 days, 0:24:43.542588---''',
+        
+
+    current density: 1.4
+    current redTemp: 2
+    
+Equilibration completed:
+    final displacement: 0.0630249409724609,
+    acceptance: 0.33522055,
+    redTemp: 2,
+    density: 1.4
+
+
+System evolved:
+    num moves = 5.00E+07
+    density = 1.4
+    total acceptance = 0.34837654
+    final displacement = 0.0630249409724609
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 1.4,
+    redTemp: 2,
+    at time: ---18341 days, 23:26:06.675089---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 1.4,
+internal energy per particle: 0.1800894362381737,
+P - rho.kT = 86.88260556196033
+
+
+        Computation completed and saved for:
+        density: 1.4,
+        redTemp: 2,
+        at time: ---18342 days, 0:23:56.252188---''',
+        
+
+    current density: 0.9
+    current redTemp: 2
+    
+Equilibration completed:
+    final displacement: 0.10500000000000001,
+    acceptance: 0.47766655,
+    redTemp: 2,
+    density: 0.9
+
+
+System evolved:
+    num moves = 5.00E+07
+    density = 0.9
+    total acceptance = 0.47865004
+    final displacement = 0.10500000000000001
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 0.9,
+    redTemp: 2,
+    at time: ---18341 days, 23:31:10.899301---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.9,
+internal energy per particle: -5.1059550027486935,
+P - rho.kT = 7.788165094265731
+
+
+        Computation completed and saved for:
+        density: 0.9,
+        redTemp: 2,
+        at time: ---18342 days, 0:28:42.237555---''',
+        
+
+    current density: 1.1
+    current redTemp: 2
+    
+Equilibration completed:
+    final displacement: 0.1,
+    acceptance: 0.3495541,
+    redTemp: 2,
+    density: 1.1
+
+
+System evolved:
+    num moves = 5.00E+07
+    density = 1.1
+    total acceptance = 0.35005192
+    final displacement = 0.1
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 1.1,
+    redTemp: 2,
+    at time: ---18341 days, 23:35:11.738221---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 1.1,
+internal energy per particle: -4.68371577038626,
+P - rho.kT = 23.78025676028519
+
+
+        Computation completed and saved for:
+        density: 1.1,
+        redTemp: 2,
+        at time: ---18342 days, 0:31:00.981436---''',
+        
+
+    current density: 1.0
+    current redTemp: 2
+    
+Equilibration completed:
+    final displacement: 0.10500000000000001,
+    acceptance: 0.40294255,
+    redTemp: 2,
+    density: 1.0
+
+
+System evolved:
+    num moves = 5.00E+07
+    density = 1.0
+    total acceptance = 0.40352298
+    final displacement = 0.10500000000000001
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 1.0,
+    redTemp: 2,
+    at time: ---18341 days, 23:37:22.738188---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 1.0,
+internal energy per particle: -5.063610777312367,
+P - rho.kT = 14.46730971543949
+
+
+        Computation completed and saved for:
+        density: 1.0,
+        redTemp: 2,
+        at time: ---18342 days, 0:32:12.009239---''',
+        
+Computation results successfully imported
+compRes: [<resultClasses.compResult object at 0x7fe4ba537da0>, <resultClasses.compResult object at 0x7fe4ba537ef0>, <resultClasses.compResult object at 0x7fe4ba537f60>, <resultClasses.compResult object at 0x7fe4ba537eb8>, <resultClasses.compResult object at 0x7fe4ba537e10>, <resultClasses.compResult object at 0x7fe4ba537e48>, <resultClasses.compResult object at 0x7fe4ba537f28>, <resultClasses.compResult object at 0x7fe4ba541160>, <resultClasses.compResult object at 0x7fe4ba5411d0>, <resultClasses.compResult object at 0x7fe4ba541240>, <resultClasses.compResult object at 0x7fe4ba5412b0>, <resultClasses.compResult object at 0x7fe4ba541320>, <resultClasses.compResult object at 0x7fe4ba541390>, <resultClasses.compResult object at 0x7fe4ba541400>, <resultClasses.compResult object at 0x7fe4ba541470>, <resultClasses.compResult object at 0x7fe4ba537ac8>, <resultClasses.compResult object at 0x7fe4ba537ba8>]
+
+    Results plotted.
+    File saved at: resultsNCC/dataCollection3/compResult
+    
+Time to run: ---1 day, 1:30:43.935550---
+slurmstepd-cpu1: error: Step 41100.4294967294 hit memory limit at least once during execution. This may or may not result in some failure.
