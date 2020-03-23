@@ -61,7 +61,7 @@ def plotPCF(cRs):
         # plotTitle = f'density: {cR.density}, redTemp: {cR.redTemp:.2E}'
         axPCF.plot(cR.PCFradii, cR.PCF,
                    marker='', ms=4, ls='-', lw=1, label=r'$\rho{}^*$=' + f'{cR.density}')
-    axPCF.legend()
+    # axPCF.legend()
     fig.show()
 
 

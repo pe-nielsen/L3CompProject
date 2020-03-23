@@ -99,7 +99,39 @@ labelfont=bf]{caption}                      % Defines caption font size as 9pt a
 
 
 \section{Methodology} \label{s:methods}
-%\lipsum[1-10]
+A system of $N=1000$ particles interacting with the Lennard-Jones potential was simulated using the Metropolis Monte Carlo algorithm (hereafter referred to as MC). The particles were initialised in a face-centred cubic (FCC) lattice within a squared container of volume $V$. Conventional boundary conditions, where a particle which moves beyond the boundary of its container is moved to the opposite side, were applied. MC involves applying a random Cartesian move to each particle in turn, described by
+\begin{displaymath}
+\Delta{}\bar{s} = d\left(\bar{\xi}-0.5\right)
+\end{displaymath}
+where $\bar{s}$ and $\bar{\xi}$ are three-vectors containing the move and random numbers between 0 and 1 respectively and $d$ is the maximum displacement.
+A move was accepted if it resulted in a decrease in the total potential energy of the system. If not, the move was accepted with a probability proportional to the Boltzmann factor of the resulting state,
+\begin{displaymath}
+\exp{\frac{\Delta{}U}{k_\text{B}T}}.
+\end{displaymath}
+where $\Delta{}U, k_\text{B}, T$ are the change in potential energy, Boltzmann constant and system temperature respectively.
+This over-weights rarer configurations and is known as importance sampling. At equilibrium, each move is reversible by a move in the opposite direction and, as such, this algorithm satisfies detail balance.
+The system was equilibrated over $10^7$ moves such that the initial FCC structure is not present. The maximum displacement, $d$ is adjusted periodically during this equilibration such that the 30-50\% of moves were accepted.
+The system was then evolved over another $10^7$ moves and its configuration sampled every $10^3$ moves. The radial distribution function, $g(r)$, was then calculated and averaged over each particle. The radial distribution function tells us the probability, relative to the ideal gas case, of finding a molecule at a given distance from a reference particle and can be expressed as
+\begin{displaymath}
+g(r) = \frac{n(r)}{n_\text{ideal}(r)}
+\end{displaymath}
+where $n_\text{ideal} = \rho{}4\pi{}r^{2}\Delta{}r$, $n(r)$ is the number of particles within a shell of thickness $\Delta{}r$ at a distance $r$, $\rho{}$ is the number density of the system.
+
+System properties relating to its configuration can be computed from $g(r)$. We compute the excess internal energy per particle by the energy equation \ref{eq:energy} and the excess pressure of the system by the virial equation \ref{eq:pressure}.
+
+\begin{equation}
+u^{*} = 2\pi{}\rho{}\int_{0}^{r_\text{max}}U_\text{LJ}(r)g(r)r^{2}dr
+\label{eq:energy}
+\end{equation}
+
+\begin{equation}
+p^{*} = P - \rho{}k_\text{B}T = - \frac{2\pi}{3}\rho{}^{2} \int_{0}^{r_\text{max}}\frac{U_\text{LJ}(r)}{dr}g(r)r^{3}dr
+\label{eq:pressure}
+\end{equation}
+
+The integrals in equations \ref{eq:energy} and \ref{eq:pressure} were approximated as sums where $dr \rightarrow{} \Delta{}r = 0.02\sigma{}$, calculated up to a maximum distance of $r_\text{max} = 6\sigma{}$. (JUSTIFY THIS)
+
+
 
 \section{Model} \label{s:model}
 Our simulated system consists of $N$ number of particles enclosed in a cubic container of volume $V$. The potential energy between any two particles in the system is given by the Lennard-Jones potential, expressed in the reduced unit scheme as
@@ -125,20 +157,37 @@ The model and method were verified by direct comparison to Monte Carlo results a
 \section{Results} \label{s:results}
 %\lipsum[1-10]
 
-The resulting reduced pressure and configuration energies as functions of the reduced density are shown in figures \ref{fig:finalResults} (and...) respectively. Configuration energy can be seen to reduce from approximately $0$ at $\rho{}^*=0$ before reaching some local minimum value and increasing. The value of $\rho{}^*$ at which this local minima is reached appears to vary as a function of the system temperature; the absolute value of the minima is decreased and occurs at smaller $\rho{}^*$ at higher temperatures when compared to that of lower temperatures.
+The resulting excess energy per particle and excess pressure as functions of the reduced density are shown in figures \ref{fig:excessEnergy} and \ref{fig:excessPressure} respectively. Configuration energy can be seen to reduce from approximately $0$ at $\rho{}^*=0$ before reaching some local minimum value and increasing. The value of $\rho{}^*$ at which this local minima is reached appears to vary as a function of the system temperature; the absolute value of the minima is decreased and occurs at smaller $\rho{}^*$ at higher temperatures when compared to that of lower temperatures.
 
 Interpretation - at lower densities we are essentially considering an ideal gas; compare to total energy u-config + u-kinetic
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{figures/excessEnergyPressure/excessEnergy.png}
+	\caption{Excess energy per particle, $u^*$, against reduced density, $\rho{}^*$, for four isotherms $T^{*} = 0.75, 1.00, 1.25, 1.50$ (blue to red). Dotted lines are present to guide the eye. Error bars are present.}
+	\label{fig:excessEnergy}
+\end{figure}
 
 Reduced pressure can be seen to increase *exponentially* from approximately $0$ at $\rho{}^*=0$ with increasing $\rho{}^*$. The rate of increase can be seen to be greater at higher than lower temperatures.
 
 
 At very low $\rho{}^*$ the system temperature is observed to have little impact on the configuration energy or pressure. However at larger $\rho{}^*$ the difference between systems of different temperatures increases.
 
+
 \begin{figure}
-	\includegraphics[width=\linewidth]{figures/finalResults1.png}
-	\caption{Configuration energy per particle, $u^*$, and virial pressure, $p^{*} = P - \rho{}kT$ for NIST data (dots) and our model (crosses). The blue and red data are along isotherms $T^{*} = 0.85, 0.90$ respectively.}
-	\label{fig:finalResults}
+	\includegraphics[width=\linewidth]{figures/excessEnergyPressure/excessPressure.png}
+	\caption{Excess pressure, $p^*$, against reduced density, $\rho{}^*$, for four isotherms $T^{*} = 0.75, 1.00, 1.25, 1.50$ (blue to red). Dotted lines are present to guide the eye. Error bars are present.}
+	\label{fig:excessPressure}
 \end{figure}
+
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{figures/excessEnergyPressure/excessPressure.png}
+	\caption{Typical radial distribution function, $g(r)$, for a gaseous, liquid, and crystalline solid state. SPECIFY PARAMETERS}
+	\label{fig:RDFs}
+\end{figure}
+
+Typical radial distribution functions for the gaseous, liquid and crystalline solid states are presented in figure \ref{fig:RDFs}. [For each state we observe the RDF to be zero until almost $r^{*}=1$. This is due to the sharp increase in the LJ potential when $r^{*}<1$ and as such these are energetically unfavourable positions for particles to be in close to but less than $r^{*}=1$ and essentially prohibited at $r^{*}<<1$.] A sharp peak is observed at $r^{*}=1$ for each state, beyond which they become distinct. In the gaseous state, $g(r)$ quickly drops to unity beyond $r^{*}=1$, [indicating that the substance is entirely homogeneous and completely lacks order.] In the liquid state, $g(r)$ displays damped oscillatory behaviour beyond $r^{*}=1$, converging to $g(r)=1$ [shortly]. The oscillations in $g(r)$ indicate that at some points we are more or less likely to observe a particle at a given distance from a reference particle [but only up to some medium value beyond which the substance is homogeneous], i.e. short-range order is observed. In the crystalline solid state the formation of many irregular peaks and troughs in $g(r)$, indicating that we are very likely or unlikely to find particles in certain positions. This irregularity is observed over a longer distance than the oscillatory behaviour in the liquid state, indicating the presence of long-range order.
+
 
 \section{Discussion} \label{s:analysis}
 %\lipsum[1-15]
