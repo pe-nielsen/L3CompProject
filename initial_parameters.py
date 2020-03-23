@@ -17,8 +17,8 @@ simResultDir = r'resultsNCC/dataCollection_lowTemp'
 #redTemps = [10]
 
 densities = [0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.55, 0.575, 0.6, 0.625, 0.65, 0.7, 0.8, 0.9, 1.0]
-#redTemps = [0.75, 1.00]
-redTemps = [1.25, 1.50]
+redTemps = [0.75, 1.00]
+#redTemps = [1.25, 1.50]
 numPools = 32
 
 

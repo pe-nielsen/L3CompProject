@@ -6,8 +6,8 @@
 #SBATCH --mem=30g
 #SBATCH -p cpu
 #SBATCH --qos=long-cpu
-#SBATCH --job-name=LJ_dCLowT_2
-#SBATCH -o ./output/dC2LowT_2.txt
+#SBATCH --job-name=LJ_dCLowT_3
+#SBATCH -o ./output/dC2LowT_3.txt
 #SBATCH -t 02-12:00:00
 # ^ sets walltime DD-HH:MM:SS
 
