@@ -61,13 +61,13 @@ def model(tempDens):
     # ####SAVE SINGLE SR FOR CALCULATING BIN WIDTHS####
     # filepath1 = join(fileDir, f'simResult')
     # Path(filepath1).mkdir(parents=True, exist_ok=True)
-    sR_dir = join(simResultDir, f'redTemp{sR.redTemp}')
-    Path(sR_dir).mkdir(parents=True, exist_ok=True)
-    filepath = join(sR_dir, f'den{sR.density}')
-    outfile = bz2.BZ2File(filepath, 'w')
-    toDump = sR
-    pickle.dump(toDump, outfile)
-    outfile.close()
+    # sR_dir = join(simResultDir, f'redTemp{sR.redTemp}')
+    # Path(sR_dir).mkdir(parents=True, exist_ok=True)
+    # filepath = join(sR_dir, f'den{sR.density}')
+    # outfile = bz2.BZ2File(filepath, 'w')
+    # toDump = sR
+    # pickle.dump(toDump, outfile)
+    # outfile.close()
     # #### REMOVE THIS ASAP ####
 
 
@@ -80,7 +80,14 @@ def model(tempDens):
     at time: ---{timedelta(seconds=(time()))}---''',
     """)
 
-    cR = computeQuantities(sR)
+    cR, gAtSigma = computeQuantities(sR)
+
+    # saving gAtSigma for checking convergence
+    filePath = join(fileDir, f'gAtSigma_d{cR.density}')
+    outfile = bz2.BZ2File(filePath, 'w')
+    toDump = gAtSigma
+    pickle.dump(toDump, outfile)
+    outfile.close()
 
     # saving computation results
     filePath = join(fileDir, f'den{cR.density}')

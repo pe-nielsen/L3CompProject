@@ -68,6 +68,18 @@ def computeQuantities(sR):
         # avPCF[i, :] = np.mean(nCount[:, i, :], axis=0)/nIdeal
         avPCF[i, :] = avnCount[i, :]/nIdeal
 
+
+    # for tracking convergence:
+    indexAtSigma = int(np.ceil(1/binWidthFactor))
+    gAtSigma = avPCF[:, indexAtSigma]
+
+    # find a way to save gAtSigma with all of the relevant information
+    # plot gAtSigma against first index ~ and relate first index to the number of MC steps taken
+
+
+
+
+
     totAvPCF = np.mean(avPCF[:, :], axis=1)
     totAvPCF_stdev = np.std(avPCF[:, :], axis=1)
 
@@ -114,12 +126,12 @@ def computeQuantities(sR):
           f'internal energy per particle: {intEn_perPart},\n'
           f'P - rho.kT = {pressure_minRhokT}\n')
 
-    return cR
+    return cR, gAtSigma
 
 
 def runComp(sR):
     """calculate and save quantities for a single simResult"""
-    cR = computeQuantities(sR)
+    cR, gAtSigma = computeQuantities(sR)
 
     #saving the compResult:
     # parent_dir = r'simulationResults/smallRunIsotherms3'
