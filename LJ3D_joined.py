@@ -57,6 +57,22 @@ def model(tempDens):
                    numEvolveMoves, container.displacement, container.mode, container.density,
                    container.partRad, container.length, configs)
 
+
+    # ####SAVE SINGLE SR FOR CALCULATING BIN WIDTHS####
+    # filepath1 = join(fileDir, f'simResult')
+    # Path(filepath1).mkdir(parents=True, exist_ok=True)
+    sR_dir = join(simResultDir, f'redTemp{sR.redTemp}')
+    Path(sR_dir).mkdir(parents=True, exist_ok=True)
+    filepath = join(sR_dir, f'den{sR.density}')
+    outfile = bz2.BZ2File(filepath, 'w')
+    toDump = sR
+    pickle.dump(toDump, outfile)
+    outfile.close
+    # #### REMOVE THIS ASAP ####
+
+
+
+
     print(f"""
     Evolution completed for:
     density: {sR.density},

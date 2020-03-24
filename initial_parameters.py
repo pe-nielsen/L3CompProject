@@ -1,7 +1,13 @@
-simResultDir = r'resultsNCC/dataCollection_lowTemp'
+#simResultDir = r'resultsNCC/dataCollection_lowTemp2'
 
-# densities = [1e-3, 3e-3, 5e-3, 7e-3, 9e-3, 7.76e-1, 7.80e-1, 8.2e-1, 8.60e-1, 9e-1]
-# redTemps = [0.85, 0.9]
+simResultDir = r'resultsNCC/BWF_results'
+#densities = [1e-3, 3e-3, 5e-3, 7e-3, 9e-3, 7.76e-1, 7.80e-1, 8.2e-1, 8.60e-1, 9e-1]
+#redTemps = [0.85, 0.9]
+#numPools = 20
+
+densities = [0.6]
+redTemps = [0.75, 1.5]
+numPools = 2
 
 #dataCollectionFullRange 0-1.5
 #densities = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
@@ -16,10 +22,11 @@ simResultDir = r'resultsNCC/dataCollection_lowTemp'
 #redTemps = [5]
 #redTemps = [10]
 
-densities = [0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.55, 0.575, 0.6, 0.625, 0.65, 0.7, 0.8, 0.9, 1.0]
-redTemps = [0.75, 1.00]
+#densities = [0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.55, 0.575, 0.6, 0.625, 0.65, 0.7, 0.8, 0.9, 1.0]
+#densities = [0.25, 0.35, 0.45, 1.1, 1.2, 1.3, 1.4, 1.5]
+#redTemps = [0.75, 1.00, 1.25, 1.50]
 #redTemps = [1.25, 1.50]
-numPools = 32
+#numPools = 32
 
 
 

@@ -1,0 +1,5 @@
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(LJ3D_joined.py:18791): Gdk-CRITICAL **: 09:34:58.421: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+Started at: ---18345 days, 9:34:58.467631---
