@@ -1,99 +1,93 @@
 Unable to init server: Could not connect: Connection refused
 Unable to init server: Could not connect: Connection refused
 
-(LJ3D_joined.py:6885): Gdk-CRITICAL **: 18:25:03.425: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
-Started at: ---18345 days, 18:25:03.462891---
-
-    current density: 0.8
-    current redTemp: 0.75
-    
-Equilibration completed:
-    final displacement: 0.10698760126390976,
-    acceptance: 0.40189,
-    redTemp: 0.75,
-    density: 0.8
-
-
-System evolved:
-    num moves = 1.00E+05
-    density = 0.8
-    total acceptance = 0.37455
-    final displacement = 0.10698760126390976
-    mode = LJ
-
-
-    Evolution completed for:
-    density: 0.8,
-    redTemp: 0.75,
-    at time: ---18345 days, 18:28:49.308558---''',
-    
-p: 0.0
-p: 0.25
-p: 0.5
-p: 0.75
+(LJ3D_joined.py:10214): Gdk-CRITICAL **: 18:35:40.346: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+Started at: ---18345 days, 18:35:40.383683---
 
     current density: 1.3
-    current redTemp: 0.75
+    current redTemp: 1.5
     
 Equilibration completed:
-    final displacement: 0.020880942940121668,
-    acceptance: 0.39931,
-    redTemp: 0.75,
+    final displacement: 0.03005100915995562,
+    acceptance: 0.38986,
+    redTemp: 1.5,
     density: 1.3
 
 
 System evolved:
     num moves = 1.00E+05
     density = 1.3
-    total acceptance = 0.5506
-    final displacement = 0.020880942940121668
+    total acceptance = 0.52817
+    final displacement = 0.03005100915995562
     mode = LJ
 
 
     Evolution completed for:
     density: 1.3,
-    redTemp: 0.75,
-    at time: ---18345 days, 18:28:49.965185---''',
+    redTemp: 1.5,
+    at time: ---18345 days, 18:39:27.290951---''',
     
 p: 0.0
 p: 0.25
 p: 0.5
 p: 0.75
 
+for density = 1.3,
+internal energy per particle: 688370.9474591574,
+P - rho.kT = 3580714.106180412
+
+
+        Computation completed and saved for:
+        density: 1.3,
+        redTemp: 1.5,
+        at time: ---18345 days, 18:39:42.210866---''',
+        
+
     current density: 0.3
-    current redTemp: 0.75
+    current redTemp: 1.5
     
 Equilibration completed:
-    final displacement: 0.20453342857286752,
-    acceptance: 0.40302,
-    redTemp: 0.75,
+    final displacement: 0.3399022616222888,
+    acceptance: 0.40662,
+    redTemp: 1.5,
     density: 0.3
 
 
 System evolved:
     num moves = 1.00E+05
     density = 0.3
-    total acceptance = 0.50553
-    final displacement = 0.20453342857286752
+    total acceptance = 0.47214
+    final displacement = 0.3399022616222888
     mode = LJ
 
 
     Evolution completed for:
     density: 0.3,
-    redTemp: 0.75,
-    at time: ---18345 days, 18:28:49.388191---''',
+    redTemp: 1.5,
+    at time: ---18345 days, 18:39:27.537894---''',
     
 p: 0.0
 p: 0.25
 p: 0.5
 p: 0.75
 
+for density = 0.3,
+internal energy per particle: 15.726817847123563,
+P - rho.kT = 21.389612160978555
+
+
+        Computation completed and saved for:
+        density: 0.3,
+        redTemp: 1.5,
+        at time: ---18345 days, 18:39:42.348700---''',
+        
+
     current density: 0.8
     current redTemp: 1.5
     
 Equilibration completed:
-    final displacement: 0.1440931833892413,
-    acceptance: 0.40396,
+    final displacement: 0.1612666662315886,
+    acceptance: 0.40533,
     redTemp: 1.5,
     density: 0.8
 
@@ -101,69 +95,74 @@ Equilibration completed:
 System evolved:
     num moves = 1.00E+05
     density = 0.8
-    total acceptance = 0.35997
-    final displacement = 0.1440931833892413
+    total acceptance = 0.33023
+    final displacement = 0.1612666662315886
     mode = LJ
 
 
     Evolution completed for:
     density: 0.8,
     redTemp: 1.5,
-    at time: ---18345 days, 18:28:49.190440---''',
+    at time: ---18345 days, 18:39:27.689193---''',
     
 p: 0.0
 p: 0.25
 p: 0.5
 p: 0.75
 
-    current density: 0.3
-    current redTemp: 1.5
+for density = 0.8,
+internal energy per particle: 59.60813161179806,
+P - rho.kT = 214.82020714931102
+
+
+        Computation completed and saved for:
+        density: 0.8,
+        redTemp: 1.5,
+        at time: ---18345 days, 18:39:42.499013---''',
+        
+
+    current density: 0.8
+    current redTemp: 0.75
     
 Equilibration completed:
-    final displacement: 0.35779185433925126,
-    acceptance: 0.40361,
-    redTemp: 1.5,
-    density: 0.3
+    final displacement: 0.09679830590544215,
+    acceptance: 0.39807,
+    redTemp: 0.75,
+    density: 0.8
 
 
 System evolved:
     num moves = 1.00E+05
-    density = 0.3
-    total acceptance = 0.46043
-    final displacement = 0.35779185433925126
+    density = 0.8
+    total acceptance = 0.40611
+    final displacement = 0.09679830590544215
     mode = LJ
 
 
     Evolution completed for:
-    density: 0.3,
-    redTemp: 1.5,
-    at time: ---18345 days, 18:28:50.644140---''',
+    density: 0.8,
+    redTemp: 0.75,
+    at time: ---18345 days, 18:39:27.953460---''',
     
 p: 0.0
 p: 0.25
 p: 0.5
 p: 0.75
-multiprocessing.pool.RemoteTraceback: 
-"""
-Traceback (most recent call last):
-  File "/usr/lib/python3.6/multiprocessing/pool.py", line 119, in worker
-    result = (True, func(*args, **kwds))
-  File "/usr/lib/python3.6/multiprocessing/pool.py", line 44, in mapstar
-    return list(map(*args))
-  File "LJ3D_joined.py", line 83, in model
-    cR, gAtSigma = computeQuantities(sR)
-  File "/home2/splb68/L3CompProject/LJ3Danalysis_parallel.py", line 74, in computeQuantities
-    gAtSigma = avPCF[:, indexAtSigma]
-IndexError: index 50 is out of bounds for axis 1 with size 50
-"""
 
-The above exception was the direct cause of the following exception:
+for density = 0.8,
+internal energy per particle: 847.6435601261649,
+P - rho.kT = 2744.45390587551
 
-Traceback (most recent call last):
-  File "LJ3D_joined.py", line 120, in <module>
-    p.map(model, tempDenss)
-  File "/usr/lib/python3.6/multiprocessing/pool.py", line 266, in map
-    return self._map_async(func, iterable, mapstar, chunksize).get()
-  File "/usr/lib/python3.6/multiprocessing/pool.py", line 644, in get
-    raise self._value
-IndexError: index 50 is out of bounds for axis 1 with size 50
+
+        Computation completed and saved for:
+        density: 0.8,
+        redTemp: 0.75,
+        at time: ---18345 days, 18:39:42.674525---''',
+        
+Computation results successfully imported
+compRes: [<resultClasses.compResult object at 0x7fec375f9198>, <resultClasses.compResult object at 0x7fec375f92e8>, <resultClasses.compResult object at 0x7fec375f9470>, <resultClasses.compResult object at 0x7fec375f0eb8>, <resultClasses.compResult object at 0x7fec375f93c8>, <resultClasses.compResult object at 0x7fec375f9390>]
+
+    Results plotted.
+    File saved at: resultsNCC/convergenceTest/compResult
+    
+Time to run: ---0:04:03.027231---
