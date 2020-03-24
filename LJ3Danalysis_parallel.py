@@ -71,7 +71,7 @@ def computeQuantities(sR):
 
     # for tracking convergence:
     indexAtSigma = int(np.ceil(1/binWidthFactor))
-    gAtSigma = avPCF[:, indexAtSigma]
+    gAtSigma = avPCF[indexAtSigma, :]
 
     # find a way to save gAtSigma with all of the relevant information
     # plot gAtSigma against first index ~ and relate first index to the number of MC steps taken
