@@ -67,7 +67,7 @@ def model(tempDens):
     outfile = bz2.BZ2File(filepath, 'w')
     toDump = sR
     pickle.dump(toDump, outfile)
-    outfile.close
+    outfile.close()
     # #### REMOVE THIS ASAP ####
 
 
