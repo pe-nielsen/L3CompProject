@@ -1,13 +1,13 @@
 #!/bin/bash
 #SBATCH -N 1
 # ^ number of nodes (16 cores per node)
-#SBATCH -c 2
+#SBATCH -c 6
 # ^ number of cores (16 per node)
 #SBATCH --mem=16g
 #SBATCH -p cpu
 #SBATCH --qos=long-cpu
-#SBATCH --job-name=LJ_BWF
-#SBATCH -o ./output/BWF.txt
+#SBATCH --job-name=LJ_Convergence
+#SBATCH -o ./output/convergence.txt
 #SBATCH -t 02-12:00:00
 # ^ sets walltime DD-HH:MM:SS
 

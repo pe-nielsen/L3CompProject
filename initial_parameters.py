@@ -1,13 +1,17 @@
 #simResultDir = r'resultsNCC/dataCollection_lowTemp2'
 
-simResultDir = r'resultsNCC/BWF_results'
+simResultDir = r'resultsNCC/convergenceTest'
 #densities = [1e-3, 3e-3, 5e-3, 7e-3, 9e-3, 7.76e-1, 7.80e-1, 8.2e-1, 8.60e-1, 9e-1]
 #redTemps = [0.85, 0.9]
 #numPools = 20
 
-densities = [0.6]
+#densities = [0.6]
+#redTemps = [0.75, 1.5]
+#numPools = 2
+
+densities = [0.3, 0.8, 1.3]
 redTemps = [0.75, 1.5]
-numPools = 2
+numPools =  6
 
 #dataCollectionFullRange 0-1.5
 #densities = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5]
@@ -59,8 +63,8 @@ sigma = 3.4e-10
 well_depth = 1.65e-21
 Boltzmann_const = 1.38064852e-23  # m^2.kg.s^-2.K-1
 
-numEquilMoves = int(2e7)
-numEvolveMoves = int(2e7)
+numEquilMoves = int(1e5)
+numEvolveMoves = int(1e5)
 
 numEquilIter = 1000
 initDisplacement = 0.1

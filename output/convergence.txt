@@ -1,0 +1,169 @@
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(LJ3D_joined.py:6885): Gdk-CRITICAL **: 18:25:03.425: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+Started at: ---18345 days, 18:25:03.462891---
+
+    current density: 0.8
+    current redTemp: 0.75
+    
+Equilibration completed:
+    final displacement: 0.10698760126390976,
+    acceptance: 0.40189,
+    redTemp: 0.75,
+    density: 0.8
+
+
+System evolved:
+    num moves = 1.00E+05
+    density = 0.8
+    total acceptance = 0.37455
+    final displacement = 0.10698760126390976
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 0.8,
+    redTemp: 0.75,
+    at time: ---18345 days, 18:28:49.308558---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+    current density: 1.3
+    current redTemp: 0.75
+    
+Equilibration completed:
+    final displacement: 0.020880942940121668,
+    acceptance: 0.39931,
+    redTemp: 0.75,
+    density: 1.3
+
+
+System evolved:
+    num moves = 1.00E+05
+    density = 1.3
+    total acceptance = 0.5506
+    final displacement = 0.020880942940121668
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 1.3,
+    redTemp: 0.75,
+    at time: ---18345 days, 18:28:49.965185---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+    current density: 0.3
+    current redTemp: 0.75
+    
+Equilibration completed:
+    final displacement: 0.20453342857286752,
+    acceptance: 0.40302,
+    redTemp: 0.75,
+    density: 0.3
+
+
+System evolved:
+    num moves = 1.00E+05
+    density = 0.3
+    total acceptance = 0.50553
+    final displacement = 0.20453342857286752
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 0.3,
+    redTemp: 0.75,
+    at time: ---18345 days, 18:28:49.388191---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+    current density: 0.8
+    current redTemp: 1.5
+    
+Equilibration completed:
+    final displacement: 0.1440931833892413,
+    acceptance: 0.40396,
+    redTemp: 1.5,
+    density: 0.8
+
+
+System evolved:
+    num moves = 1.00E+05
+    density = 0.8
+    total acceptance = 0.35997
+    final displacement = 0.1440931833892413
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 0.8,
+    redTemp: 1.5,
+    at time: ---18345 days, 18:28:49.190440---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+    current density: 0.3
+    current redTemp: 1.5
+    
+Equilibration completed:
+    final displacement: 0.35779185433925126,
+    acceptance: 0.40361,
+    redTemp: 1.5,
+    density: 0.3
+
+
+System evolved:
+    num moves = 1.00E+05
+    density = 0.3
+    total acceptance = 0.46043
+    final displacement = 0.35779185433925126
+    mode = LJ
+
+
+    Evolution completed for:
+    density: 0.3,
+    redTemp: 1.5,
+    at time: ---18345 days, 18:28:50.644140---''',
+    
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/multiprocessing/pool.py", line 119, in worker
+    result = (True, func(*args, **kwds))
+  File "/usr/lib/python3.6/multiprocessing/pool.py", line 44, in mapstar
+    return list(map(*args))
+  File "LJ3D_joined.py", line 83, in model
+    cR, gAtSigma = computeQuantities(sR)
+  File "/home2/splb68/L3CompProject/LJ3Danalysis_parallel.py", line 74, in computeQuantities
+    gAtSigma = avPCF[:, indexAtSigma]
+IndexError: index 50 is out of bounds for axis 1 with size 50
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "LJ3D_joined.py", line 120, in <module>
+    p.map(model, tempDenss)
+  File "/usr/lib/python3.6/multiprocessing/pool.py", line 266, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+  File "/usr/lib/python3.6/multiprocessing/pool.py", line 644, in get
+    raise self._value
+IndexError: index 50 is out of bounds for axis 1 with size 50
