@@ -4,12 +4,14 @@ from resultClasses import compResult
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcol
 import matplotlib.cm as cm
+from matplotlib import gridspec
 from time import time
 from datetime import timedelta
 import pickle
 import bz2
 from pathlib import Path
 import numpy as np
+from numpy import convolve
 
 
 def plotCompResults(compResults, cR_parent_dir):
@@ -92,7 +94,7 @@ def plotCompResults(compResults, cR_parent_dir):
                      marker='', ls='', lw=1, ecolor=cpick.to_rgba(rT), capsize=2)
 
 
-    axU.legend(loc='upper right',
+    axU.legend(loc='upper left',
                 frameon=True, framealpha=1, edgecolor='black', fancybox=False)
     axP.legend(loc='upper left',
                 frameon=True, framealpha=1, edgecolor='black', fancybox=False)
@@ -187,7 +189,7 @@ def plotCompResultsSideNIST(compResults, cR_parent_dir):
     axP.plot(NIST_rho, NIST_T09_p,
              ls='--', marker='x', ms=4, lw=1, color=cpick.to_rgba(0.90))
 
-    axU.legend(loc='upper right',
+    axU.legend(loc='upper left',
                frameon=True, framealpha=1, edgecolor='black', fancybox=False)
     axP.legend(loc='upper left',
                frameon=True, framealpha=1, edgecolor='black', fancybox=False)
@@ -196,6 +198,116 @@ def plotCompResultsSideNIST(compResults, cR_parent_dir):
     # fig.savefig(join(cR_parent_dir, r'excessPressure.png'), format='png', dpi=300)
 
     # fig.show()
+
+
+def plotConvergence():
+    # import convergence data for just a single rT
+
+    cm1 = mcol.LinearSegmentedColormap.from_list("BlueToRed", ["b", "r"])
+    cnorm = mcol.LogNorm(vmin=0.75, vmax=1.5)  # normalising the colourmap
+    cpick = cm.ScalarMappable(norm=cnorm, cmap=cm1)  # object which maps redTemp to colour
+
+    # fig, (axUp, axLow) = plt.subplots(nrows=2, ncols=1, sharex='all', figsize=[6.4, 4.8])
+    fig = plt.figure(figsize=[6.4, 4.8])
+    gs = fig.add_gridspec(2, 1)
+    # gs = gridspec.GridSpec(2, 1)
+    gs.update(hspace=0.0)
+    axUp = fig.add_subplot(gs[0])
+    axLow = fig.add_subplot(gs[1])
+
+    # fig.subplots_adjust(hspace=0.0, wspace=0.0)
+    # fig.tight_layout(pad=0.0)
+    axUp.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True, labelbottom=False)
+    axLow.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
+    # plt.setp(axUp.get_xticklabels(), visible=False)
+    axUp.set(
+        # xlabel='MC Moves (in millions)',
+        ylabel=r'g($\sigma{}$)',
+    )
+    axLow.set(
+        xlabel='MC Moves (in millions)',
+        ylabel=r'g($\sigma{}$)',
+    )
+
+    parent_folder = r'resultsNCC/convergence/compResult'
+    rT_folders = ['redTemp0.75', 'redTemp1.5']
+    for rT_subfolder in rT_folders:
+        gAtSigma_LIST = []
+        densities = []
+        redTemp = 0
+        axis = None
+        if '1.5' in rT_subfolder:
+            redTemp = 1.5
+            axis = axUp
+        else:
+            redTemp = 0.75
+            axis = axLow
+
+        rT_folder = join(parent_folder, rT_subfolder)
+        data_files = [f for f in listdir(rT_folder) if isfile(join(rT_folder, f)) and ('gAtSigma' in f)]
+        for j in range(len(data_files)):
+            df = data_files[j]
+            data_path = join(rT_folder, df)
+            infile = bz2.BZ2File(data_path, 'r')
+            gAS = pickle.load(infile)
+            infile.close()
+            gAtSigma_LIST.append(gAS)
+            densities.append(float(df[-3:]))
+            # print(f'density: {df[-3:]}')
+
+        for i in range(len(gAtSigma_LIST)):
+            gAS = gAtSigma_LIST[i]
+            density = densities[i]
+            numSamples = gAS.shape[0]
+            numMoves = 2e7
+            movesPerSample = numMoves/numSamples
+            MCMoves = [j*movesPerSample for j in range(numSamples)]
+
+            # gASMA = movingaverage(gAS.tolist(), 1000)
+            gASMA = cumulativeaverage(gAS.tolist())
+            print(f"""
+            list: {gAS}
+            rA_list: {gASMA}
+            difference: {np.array(gASMA) - gAS[numSamples - len(gASMA):]}
+            """)
+
+            MCMoves_cropped = np.array(MCMoves[numSamples - len(gASMA):])
+
+            if density == max(densities):
+                linestyle = '-'
+            elif density == min(densities):
+                linestyle = ':'
+            else:
+                linestyle = '-.'
+
+            axis.plot(MCMoves_cropped/1e6, gASMA,
+                      ls=linestyle, marker='', lw=1, color=cpick.to_rgba(redTemp), label=r'$\rho{}$*'+f'={density}')
+    # ax.legend(loc='bottom right')
+    fig.show()
+    fig.savefig(join(parent_folder, r'gAtSigma_convergence.png'), format='png', dpi=1200)
+
+
+
+def cumulativeaverage(values):
+    cumsum = np.cumsum(values, dtype=float)
+    cumaverage = [cumsum[i]/(i+1) for i in range(len(cumsum))]
+    return cumaverage
+
+
+
+
+# def running_mean(x, N):
+#     cumsum = np.cumsum(np.insert(x, 0, 0))
+#     return (cumsum[N:] - cumsum[:-N]) / float(N)
+
+# def runningAverage(listOfNumbers):
+#     rA_list = []
+#     for i in range(len(listOfNumbers)):
+#         for j in range(i):
+#             subList = listOfNumbers[:i]
+#             mean = np.mean(subList)
+#             rA_list.append(mean)
+#     return rA_list
 
 
 def importCompResults(cR_parent_dir):
@@ -230,16 +342,19 @@ def importCompResults(cR_parent_dir):
 
 if __name__ == '__main__':
     startTime = time()
+    print(f'---{timedelta(seconds=startTime)}---')
+
 
     cR_parent_dir = r'report/figures/excessEnergyPressure'
     # cR_parent_dir = r'resultsNCC\dataCollection3\compResult'
     # cR_parent_dir = r'resultsNCC\NIST_params_3\compResult'
     saveLocation = cR_parent_dir
-    compResults = importCompResults(cR_parent_dir)
+    # compResults = importCompResults(cR_parent_dir)
 
 
-    plotCompResults(compResults, saveLocation)
+    # plotCompResults(compResults, saveLocation)
     # plotCompResultsSideNIST(compResults, saveLocation)
+    plotConvergence()
 
     endTime = time() - startTime
     print(f'---{timedelta(seconds=endTime)}---')
