@@ -3,3 +3,10 @@ Unable to init server: Could not connect: Connection refused
 
 (LJ3D_joined.py:28119): Gdk-CRITICAL **: 17:41:24.529: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
 Started at: ---18345 days, 17:41:24.558548---
+Computation results successfully imported
+compRes: [<resultClasses.compResult object at 0x7fb18d872b70>, <resultClasses.compResult object at 0x7fb18d872da0>]
+
+    Results plotted.
+    File saved at: resultsNCC/BWF_results/compResult
+    
+Time to run: ---13:34:37.760034---
