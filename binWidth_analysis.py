@@ -113,15 +113,23 @@ def main(sRbWF):
 
     #saving the compResult:
 
-    cR_sub_dir = f'compResults'
-    parent_dir = r'report/figures/binWidth'
+    parent_dir = r'resultsNCC/BWF_results'
+    cR_sub_dir = f'compResultLargedr/redTemp{cR.redTemp}'
     cR_parent_dir = join(parent_dir, cR_sub_dir)
     Path(cR_parent_dir).mkdir(parents=True, exist_ok=True)
-    # cr_data_path = cR_parent_dir + '\\' + f'den{int(cR.density * 100)}bWF{int(binWidthFactor*10000)}'
-    cr_data_path = join(cR_parent_dir, f'den{int(cR.density)}bWF{int(binWidthFactor)}')
-    print(f'den{int(cR.density)}bWF{int(binWidthFactor)}')
+    cR_data_path = join(cR_parent_dir, f'den{int(cR.density)}bWF{int(binWidthFactor)}')
 
-    outfile = bz2.BZ2File(cr_data_path, 'w')
+
+    #
+    # cR_sub_dir = f'compResults'
+    # parent_dir = r'report/figures/binWidth'
+    # cR_parent_dir = join(parent_dir, cR_sub_dir)
+    # Path(cR_parent_dir).mkdir(parents=True, exist_ok=True)
+    # # cr_data_path = cR_parent_dir + '\\' + f'den{int(cR.density * 100)}bWF{int(binWidthFactor*10000)}'
+    # cr_data_path = join(cR_parent_dir, f'den{int(cR.density)}bWF{int(binWidthFactor)}')
+    # print(f'den{int(cR.density)}bWF{int(binWidthFactor)}')
+
+    outfile = bz2.BZ2File(cR_data_path, 'w')
     toDump = (binWidthFactor, cR)
     pickle.dump(toDump, outfile)
     outfile.close()
@@ -142,12 +150,29 @@ if __name__ == '__main__':
     # finding all simResult files
     simResults = []  # holds list of all simResults
 
-    parent_dir = r'report/figures/binWidth'
-    df = 'rT1.5den0.6'
-    data_path = join(parent_dir, df)
-    infile = bz2.BZ2File(data_path, 'r')
-    sR = pickle.load(infile)
-    infile.close()
+    parent_dir = r'resultsNCC/BWF_results'
+    redTemp_dirs = [f for f in listdir(parent_dir) if not isfile(join(parent_dir, f)) and 'redTemp' in f]
+
+    for i in range(len(redTemp_dirs)):
+        rT_dir = redTemp_dirs[i]
+        dps = join(parent_dir, rT_dir)
+        data_files = [f for f in listdir(dps) if
+                  isfile(join(dps, f)) and ('den' in f)]
+        for j in range(len(data_files)):
+            df = data_files[j]
+            data_path = join(dps, df)
+            infile = bz2.BZ2File(data_path, 'r')
+            sR = pickle.load(infile)
+            # infile = open(data_path, 'rb')
+            # sR = pickle.load(infile)
+            infile.close()
+            simResults.append(sR)
+
+    # df = 'rT1.5den0.6'
+    # data_path = join(parent_dir, df)
+    # infile = bz2.BZ2File(data_path, 'r')
+    # sR = pickle.load(infile)
+    # infile.close()
 
     print(f'simResults: {simResults}')
 
@@ -156,13 +181,14 @@ if __name__ == '__main__':
     binWidthFactors = [0.001, 0.002, 0.005, 0.007, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1]
     print(f'binwidthfactors: {binWidthFactors}')
     sRbWFs = []
-    for bWF in binWidthFactors:
-        sRbWF = [sR, bWF]
-        sRbWFs.append(sRbWF)
-        print(sR)
-        print(bWF)
+    for sR in simResults:
+        for bWF in binWidthFactors:
+            sRbWF = [sR, bWF]
+            sRbWFs.append(sRbWF)
+            print(sR)
+            print(bWF)
 
-    numProccesses = 8  # number of cores used for calculations
+    numProccesses = 28  # number of cores used for calculations
     with Pool(processes=numProccesses) as p:
         p.map(main, sRbWFs)
 

@@ -139,9 +139,9 @@ def runComp(sR):
     cR_sub_dir = f'compResultLargedr/redTemp{cR.redTemp}'
     cR_parent_dir = join(parent_dir, cR_sub_dir)
     Path(cR_parent_dir).mkdir(parents=True, exist_ok=True)
-    cr_data_path = join(cR_parent_dir, f'den{int(cR.density * 100)}')
+    cR_data_path = join(cR_parent_dir, f'den{int(cR.density * 100)}')
 
-    outfile = bz2.BZ2File(cr_data_path, 'w')
+    outfile = bz2.BZ2File(cR_data_path, 'w')
     toDump = cR
     pickle.dump(toDump, outfile)
     outfile.close()
