@@ -1,15 +1,16 @@
 #!/bin/bash
-#SBATCH -N 1
+#SBATCH -N 2
 # ^ number of nodes (16 cores per node)
-#SBATCH -c 6
+#SBATCH -c 14
 # ^ number of cores (16 per node)
-#SBATCH --mem=16g
+#SBATCH --mem=40g
 #SBATCH -p cpu
 #SBATCH --qos=long-cpu
-#SBATCH --job-name=LJ_Convergence
-#SBATCH -o ./output/convergence.txt
-#SBATCH -t 02-12:00:00
+#SBATCH --job-name=LJ_BWF
+#SBATCH -o ./output/BWF_analysis.txt
+#SBATCH -t 00-12:00:00
 # ^ sets walltime DD-HH:MM:SS
 
 source /etc/profile
-python3 LJ3D_joined.py
+#python3 LJ3D_joined.py
+python3 binWidth_analysis.py

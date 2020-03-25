@@ -114,10 +114,10 @@ def main(sRbWF):
     #saving the compResult:
 
     parent_dir = r'resultsNCC/BWF_results'
-    cR_sub_dir = f'compResultLargedr/redTemp{cR.redTemp}'
+    cR_sub_dir = f'compResult_VaryBWFs/redTemp{cR.redTemp}'
     cR_parent_dir = join(parent_dir, cR_sub_dir)
     Path(cR_parent_dir).mkdir(parents=True, exist_ok=True)
-    cR_data_path = join(cR_parent_dir, f'den{int(cR.density)}bWF{int(binWidthFactor)}')
+    cR_data_path = join(cR_parent_dir, f'den{cR.density}bWF{binWidthFactor}')
 
 
     #

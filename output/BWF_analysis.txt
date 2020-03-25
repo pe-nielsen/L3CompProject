@@ -1,0 +1,584 @@
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(binWidth_analysis.py:16002): Gdk-CRITICAL **: 13:35:07.196: gdk_cursor_new_for_display: assertion 'GDK_IS_DISPLAY (display)' failed
+Start Time: ---18346 days, 13:35:07.237566---
+simResults: [<resultClasses.simResult object at 0x7f95c048ce80>, <resultClasses.simResult object at 0x7f95e39ff9b0>]
+binwidthfactors: [0.001, 0.002, 0.005, 0.007, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1]
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.001
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.002
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.005
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.007
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.01
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.02
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.03
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.04
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.05
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.06
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.07
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.08
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.09
+<resultClasses.simResult object at 0x7f95c048ce80>
+0.1
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.001
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.002
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.005
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.007
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.01
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.02
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.03
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.04
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.05
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.06
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.07
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.08
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.09
+<resultClasses.simResult object at 0x7f95e39ff9b0>
+0.1
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.795214287344268,
+P - rho.kT = -0.0009573633791896966
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.1,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:25:05.770663---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.6847842949839915,
+P - rho.kT = -0.2948458225136635
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.08,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:25:17.836790---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.739552170780736,
+P - rho.kT = -0.14546502803574893
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.09,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:25:48.239629---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.388058375813422,
+P - rho.kT = 0.5425982601423214
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.09,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:26:04.586974---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.611796393323332,
+P - rho.kT = -0.37707377592034075
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.07,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:26:13.519865---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.3580232075142575,
+P - rho.kT = 0.3835428231527391
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.08,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:26:15.972718---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.424703847139875,
+P - rho.kT = 0.6831045790283421
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.1,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:26:24.216173---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.317928172866452,
+P - rho.kT = 0.2692493289951837
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.07,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:26:39.147358---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.478207090625592,
+P - rho.kT = -0.5449106851509088
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.05,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:26:45.326759---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.547579613794883,
+P - rho.kT = -0.4736933477438867
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.06,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:26:46.854311---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.275698324560549,
+P - rho.kT = 0.16493511319248622
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.06,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:26:51.130814---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.228882639660835,
+P - rho.kT = 0.0839973045212765
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.05,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:26:59.430924---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.407703771973947,
+P - rho.kT = -0.606289285222242
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.04,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:28:01.577901---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.1790812773577555,
+P - rho.kT = 0.018433576615802687
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.04,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:28:35.195285---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.336133547001292,
+P - rho.kT = -0.6554308047981964
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.03,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:29:09.534055---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.12690945050278,
+P - rho.kT = -0.034267262366742074
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.03,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:28:58.793011---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.262236567220301,
+P - rho.kT = -0.6882760180259193
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.02,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:29:52.122025---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.075130612827701,
+P - rho.kT = -0.08249365338785289
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.02,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:30:13.782090---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.188616699969932,
+P - rho.kT = -0.7148414948895284
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.01,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:35:06.957928---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.020978521842519,
+P - rho.kT = -0.11718314659416142
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.01,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:35:35.044814---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.166162340776856,
+P - rho.kT = -0.7205032344590483
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.007,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:39:06.283812---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -4.003944506638036,
+P - rho.kT = -0.12353854634076705
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.007,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:39:20.223121---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.151231828371336,
+P - rho.kT = -0.7237950300864592
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.005,
+            reduced Temperature: 0.75
+            At time ---18346 days, 15:43:37.150736---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -3.9932936006380606,
+P - rho.kT = -0.13013600077455914
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.005,
+            reduced Temperature: 1.5
+            At time ---18346 days, 15:43:38.423667---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -5.128532103365267,
+P - rho.kT = -0.7272755999432019
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.002,
+            reduced Temperature: 0.75
+            At time ---18346 days, 16:03:35.073027---
+            
+
+
+p: 0.0
+p: 0.25
+p: 0.5
+p: 0.75
+
+for density = 0.6,
+internal energy per particle: -3.976304083275319,
+P - rho.kT = -0.13637281511352112
+
+
+
+
+            Results computed saved for:
+            density: 0.6,
+            bin width factor: 0.002,
+            reduced Temperature: 1.5
+            At time ---18346 days, 16:03:50.550650---
+            
+
+
+Run Time:   ---3:00:52.942383---
