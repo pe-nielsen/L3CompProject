@@ -50,6 +50,10 @@ def plotCompResults(compResults, cR_parent_dir):
     # fig, (axU, axP) = plt.subplots(nrows=2, ncols=1, figsize=[6.4, 8])
     figU, axU = plt.subplots(nrows=1, ncols=1, figsize=[6.4, 4.8])
     figP, axP = plt.subplots(nrows=1, ncols=1, figsize=[6.4, 4.8])
+
+    left, bottom, width, height = [0.275, 0.55, 0.5, 0.35]
+    axPinset = figP.add_axes([left, bottom, width, height])
+
     axU.set(
         xlabel=r'$\rho{}*$',
         # ylabel=r'configuration energy per particle, u',
@@ -65,8 +69,25 @@ def plotCompResults(compResults, cR_parent_dir):
         # yscale='log',
         # xscale='log',
     )
+    # axPinset.set(
+    #     xlabel=r'$\rho{}*$',
+    #     # ylabel=r'P-$\rho$kT',
+    #     ylabel=r'$p*$',
+    #     ylim=[-1.25, 0.5],
+    #     xlim=[0.5, 0.7],
+    # )
+    axPinset.set(
+        xlabel=r'$\rho{}*$',
+        # ylabel=r'P-$\rho$kT',
+        ylabel=r'$p*$',
+        ylim=[-1.25, 0.3],
+        xlim=[0, 0.9],
+    )
+
     axU.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
     axP.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
+    axPinset.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
+
 
     cm1 = mcol.LinearSegmentedColormap.from_list("BlueToRed", ["b", "r"])
     # cnorm = mcol.Normalize(vmin=min(redTemps), vmax=max(redTemps))  # normalising the colourmap
@@ -120,8 +141,14 @@ def plotCompResults(compResults, cR_parent_dir):
         axP.plot(densities, pressures_minRhokT,
                  ls=':', marker='.', ms=4, lw=1, color=cpick.to_rgba(rT), label=f'T*={rT}')
 
-        axP.plot(densities, np.array(ReePressures),
-                 ls='-', lw=1.5, c=cpick.to_rgba(rT))
+        axPinset.plot(densities, pressures_minRhokT,
+                      ls=':', marker='.', ms=4, lw=1.5, color=cpick.to_rgba(rT), label=f'T*={rT}')
+        if rT == 0.75 or rT == 1.5:
+            axPinset.errorbar(densities, pressures_minRhokT, yerr=errorsIn_pressure,
+                         marker='', ls='', lw=1, ecolor=cpick.to_rgba(rT), capsize=2)
+
+        # axP.plot(densities, np.array(ReePressures),
+        #          ls='-', lw=1.5, c=cpick.to_rgba(rT))
 
         axU.errorbar(densities, intEns_perPart, yerr=errorsIn_u,
                      marker='', ls='', lw=1, ecolor=cpick.to_rgba(rT), capsize=2)
@@ -143,8 +170,8 @@ def plotCompResults(compResults, cR_parent_dir):
     # axP.legend(loc='upper left',
     #             frameon=True, framealpha=1, edgecolor='black', fancybox=False)
 
-    # figU.savefig(join(cR_parent_dir, r'excessEnergy.png'), format='png', dpi=1200)
-    # figP.savefig(join(cR_parent_dir, r'excessPressure.png'), format='png', dpi=1200)
+    figU.savefig(join(cR_parent_dir, r'excessEnergy.png'), format='png', dpi=1200)
+    figP.savefig(join(cR_parent_dir, r'excessPressure.png'), format='png', dpi=1200)
 
     # figU.show()
     figP.show()
