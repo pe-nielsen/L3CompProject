@@ -17,6 +17,23 @@ plt.style.use('seaborn-deep')
 plt.style.use(r'PaperDoubleFig.mplstyle')
 
 
+def ReePressure(density, redTemp, sigma, depth):
+    numDens = density/(sigma**3)
+    beta = 1/(redTemp*depth)
+
+    x = density/(redTemp**0.25)
+    Bs = [3.629, 7.2641, 10.4924, 11.459, 0, 0, 0, 0, 0, 2.1769]
+    Cs = [5.3692, 6.5797, 6.1745, -4.2685, 1.6841]
+    Ds = [-3.4921, 18.6980, -35.5049, 31.8151, -11.1953]
+
+    term1 = 1 + (Bs[0]*x**1) + (Bs[1]*x**2) + (Bs[2]*x**3) + (Bs[3]*x**4) + (Bs[9]*x**10)
+    term2 = (1/redTemp)**(1/2) * np.sum([(i+1)*Cs[i]*x**(i+1) for i in range(len(Cs))])
+    term3 = (1/redTemp) * np.sum([Ds[i]*x**(i+1) for i in range(len(Cs))])
+
+    betaPorho = term1 + term2 + term3
+    return betaPorho
+
+
 def plotCompResults(compResults, cR_parent_dir):
     plt.style.use('seaborn-deep')
     plt.style.use(r'PaperDoubleFig.mplstyle')
@@ -60,6 +77,9 @@ def plotCompResults(compResults, cR_parent_dir):
     redTemps.sort()
     for i in range(len(redTemps)):
         rT = redTemps[i]
+
+        ReePressures = []
+
         intEns_perPart = []
         pressures_minRhokT = []
         densities = []
@@ -69,8 +89,14 @@ def plotCompResults(compResults, cR_parent_dir):
         for j in range(len(compResults)):
             cR = compResults[j]
             if cR.redTemp == rT:
-                intEns_perPart.append(cR.intEn_perPart)
-                pressures_minRhokT.append(cR.pressure_minRhokT)
+                cutOffR = cR.containerLength/2
+                u_LRC = (8/9)*np.pi*cR.density*((1/cutOffR)**9 - 3*(1/cutOffR)**3)
+                p_LRC = (32/9)*np.pi*(cR.density**2)*((1/cutOffR)**9 - (3/2)*(1/cutOffR)**3)
+                print(f'uLRC: {u_LRC},\n'
+                      f'pLRC: {p_LRC}\n')
+
+                intEns_perPart.append(cR.intEn_perPart + u_LRC)
+                pressures_minRhokT.append(cR.pressure_minRhokT + p_LRC)
                 densities.append(cR.density)
                 numberDensity = cR.numParts/(cR.containerLength**3)
 
@@ -79,6 +105,9 @@ def plotCompResults(compResults, cR_parent_dir):
                 # sum_ErrorGiSq = np.sum(cR.PCFstdev**2)
                 errorsIn_u.append(cR.intEnstdev)
                 errorsIn_pressure.append(cR.pressurestdev)
+
+                ReePressures.append(ReePressure(cR.density, cR.redTemp, cR.sigma, cR.wellDepth))
+
                 # print(f'at redTemp {cR.redTemp}, den {cR.density}:\n'
                 #       f'    U*: {cR.intEn_perPart:.5E}\n'
                 #       f'    +/-: {cR.intEnstdev:.5E}\n'
@@ -91,10 +120,22 @@ def plotCompResults(compResults, cR_parent_dir):
         axP.plot(densities, pressures_minRhokT,
                  ls=':', marker='.', ms=4, lw=1, color=cpick.to_rgba(rT), label=f'T*={rT}')
 
+        axP.plot(densities, np.array(ReePressures),
+                 ls='-', lw=1.5, c=cpick.to_rgba(rT))
+
         axU.errorbar(densities, intEns_perPart, yerr=errorsIn_u,
                      marker='', ls='', lw=1, ecolor=cpick.to_rgba(rT), capsize=2)
         axP.errorbar(densities, pressures_minRhokT, yerr=errorsIn_pressure,
                      marker='', ls='', lw=1, ecolor=cpick.to_rgba(rT), capsize=2)
+
+    # Johnson_density = [0.05, 0.6, 0.7, 0.8, 0.9, 0.95]
+    # Johnson_p = [0.0368, -2.272, 0.015, 1.011, 3.28, 5.131]
+    # Johnson_u = [-0.483, -4.224, -4.887, -5.535, -6.055, -6.2321]
+    #
+    # axU.plot(Johnson_density, Johnson_u,
+    #          ls=':', marker='x', ms=4, lw=1.5, color='k', label=f'T*=1.0')
+    # axP.plot(Johnson_density, Johnson_p,
+    #          ls=':', marker='x', ms=4, lw=1.5, color='k', label=f'T*=1.0')
 
 
     # axU.legend(loc='upper left',
@@ -102,10 +143,105 @@ def plotCompResults(compResults, cR_parent_dir):
     # axP.legend(loc='upper left',
     #             frameon=True, framealpha=1, edgecolor='black', fancybox=False)
 
-    figU.savefig(join(cR_parent_dir, r'excessEnergy.png'), format='png', dpi=1200)
-    figP.savefig(join(cR_parent_dir, r'excessPressure.png'), format='png', dpi=1200)
+    # figU.savefig(join(cR_parent_dir, r'excessEnergy.png'), format='png', dpi=1200)
+    # figP.savefig(join(cR_parent_dir, r'excessPressure.png'), format='png', dpi=1200)
 
-    # fig.show()
+    # figU.show()
+    figP.show()
+
+
+def plotJohnsoncomparison(compResults, saveLocation):
+    plt.style.use('seaborn-deep')
+    plt.style.use(r'PaperDoubleFig.mplstyle')
+
+    print(f'compRes: {compResults}')
+
+    # create list of redTemps:
+    redTemps = []
+    for cR in compResults:
+        if cR.redTemp not in redTemps:
+            redTemps.append(cR.redTemp)
+
+    cm1 = mcol.LinearSegmentedColormap.from_list("BlueToRed", ["b", "r"])
+    cnorm = mcol.LogNorm(vmin=min(redTemps), vmax=max(redTemps))  # normalising the colourmap
+    cpick = cm.ScalarMappable(norm=cnorm, cmap=cm1)  # object which maps redTemp to colour
+
+    figsizes = [6.4, 7]
+
+    fig = plt.figure(figsize=figsizes)
+    gs = fig.add_gridspec(nrows=2, ncols=1, height_ratios=[1,1])
+    gs.update(hspace=0.0)
+    axU = fig.add_subplot(gs[0])
+    axP = fig.add_subplot(gs[1], sharex=axU)
+
+    axU.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True,
+                    labelbottom=False)
+    axP.tick_params(axis='both', which='both', direction='in', bottom=True, top=True, left=True, right=True)
+
+    axU.set(
+        ylabel=r'$u*$'
+    )
+    axP.set(
+        xlabel=r'$\rho{}*$',
+        ylabel=r'$p*$',
+    )
+
+    redTemps.sort()
+    for i in range(len(redTemps)):
+        rT = redTemps[i]
+        intEns_perPart = []
+        pressures_minRhokT = []
+        densities = []
+        numberDensities = []
+        errorsIn_u = []
+        errorsIn_pressure = []
+        for j in range(len(compResults)):
+            cR = compResults[j]
+            if cR.redTemp == rT:
+                cutOffR = cR.containerLength / 2
+                u_LRC = (8 / 9) * np.pi * cR.density * ((1 / cutOffR) ** 9 - 3 * (1 / cutOffR) ** 3)
+                p_LRC = (32 / 9) * np.pi * (cR.density ** 2) * ((1 / cutOffR) ** 9 - (3 / 2) * (1 / cutOffR) ** 3)
+                print(f'uLRC: {u_LRC},\n'
+                      f'pLRC: {p_LRC}\n')
+
+                intEns_perPart.append(cR.intEn_perPart + u_LRC)
+                pressures_minRhokT.append(cR.pressure_minRhokT + p_LRC)
+                densities.append(cR.density)
+                numberDensity = cR.numParts / (cR.containerLength ** 3)
+                numberDensities.append(numberDensity)
+                errorsIn_u.append(cR.intEnstdev)
+                errorsIn_pressure.append(cR.pressurestdev)
+
+        limIndex = -5
+        axU.plot(densities[:limIndex], intEns_perPart[:limIndex],
+                 ls='', marker='o', ms=4, mfc='none', color=cpick.to_rgba(rT))
+        axP.plot(densities[:limIndex], pressures_minRhokT[:limIndex],
+                 ls='', marker='o', ms=4, mfc='none', color=cpick.to_rgba(rT))
+
+        axU.errorbar(densities[:limIndex], intEns_perPart[:limIndex], yerr=errorsIn_u[:limIndex],
+                     marker='', ls='', lw=1, ecolor=cpick.to_rgba(rT), capsize=2)
+        axP.errorbar(densities[:limIndex], pressures_minRhokT[:limIndex], yerr=errorsIn_pressure[:limIndex],
+                     marker='', ls='', lw=1, ecolor=cpick.to_rgba(rT), capsize=2)
+
+    Johnson_density100 = [0.05, 0.6, 0.7, 0.8, 0.9, 0.95]
+    Johnson_p100 = [0.0368, -2.272, 0.015, 1.011, 3.28, 5.131]
+    Johnson_u100 = [-0.483, -4.224, -4.887, -5.535, -6.055, -6.2321]
+
+    Johnson_density075 = [0.005, 0.005, 0.01, 0.01, 0.7, 0.8, 0.9]
+    Johnson_p075 = [0.00359, 0.00358, 0.00684, 0.00685, -0.834, -0.256, 1.503]
+    Johnson_u075 = [-0.0554, -0.0613, -0.115, -0.113, -5.070, -5.765, -6.365]
+
+    axU.plot(Johnson_density100, Johnson_u100,
+             ls='', marker='x', ms=10, c=cpick.to_rgba(1.0))
+    axP.plot(Johnson_density100, Johnson_p100,
+             ls='', marker='x', ms=10, c=cpick.to_rgba(1.0))
+    axU.plot(Johnson_density075, Johnson_u075,
+             ls='', marker='x', ms=10, c=cpick.to_rgba(0.75))
+    axP.plot(Johnson_density075, Johnson_p075,
+             ls='', marker='x', ms=10, c=cpick.to_rgba(0.7))
+
+    fig.savefig(join(saveLocation, r'Johnson.png'), format='png', dpi=1200)
+    fig.show()
 
 
 def plotNISTcomparison(compResults, saveLocation):
@@ -177,19 +313,19 @@ def plotNISTcomparison(compResults, saveLocation):
 
     axRU1.set(
         xlabel=r'$\rho{}*\times{}1000$',
-        ylabel=r'$u* - u_{\mathrm{NIST}}*$',
+        ylabel=r'$\Delta{}u*\times{}1000$',
     )
     axRU2.set(
         xlabel=r'$\rho{}*$',
-        ylabel=r'$u* - u_{\mathrm{NIST}}*$',
+        ylabel=r'$\Delta{}u*$',
     )
     axRP1.set(
         xlabel=r'$\rho{}*\times{}1000$',
-        ylabel=r'$p* - p_{\mathrm{NIST}}*$',
+        ylabel=r'$\Delta{}p*\times{}1000$',
     )
     axRP2.set(
         xlabel=r'$\rho{}*$',
-        ylabel=r'$p* - p_{\mathrm{NIST}}*$',
+        ylabel=r'$\Delta{}p*$',
     )
 
     # ###NIST RESULTS###
@@ -229,7 +365,7 @@ def plotNISTcomparison(compResults, saveLocation):
 
 
 
-
+    # added long range corrections!
 
     redTemps.sort()
     for i in range(len(redTemps)):
@@ -243,8 +379,14 @@ def plotNISTcomparison(compResults, saveLocation):
         for j in range(len(compResults)):
             cR = compResults[j]
             if cR.redTemp == rT:
-                intEns_perPart.append(cR.intEn_perPart)
-                pressures_minRhokT.append(cR.pressure_minRhokT)
+                cutOffR = cR.containerLength/2
+                u_LRC = (8/9)*np.pi*cR.density*((1/cutOffR)**9 - 3*(1/cutOffR)**3)
+                p_LRC = (32/9)*np.pi*(cR.density**2)*((1/cutOffR)**9 - (3/2)*(1/cutOffR)**3)
+                print(f'uLRC: {u_LRC},\n'
+                      f'pLRC: {p_LRC}\n')
+
+                intEns_perPart.append(cR.intEn_perPart + u_LRC)
+                pressures_minRhokT.append(cR.pressure_minRhokT + p_LRC)
                 densities.append(cR.density)
                 numberDensity = cR.numParts / (cR.containerLength ** 3)
                 numberDensities.append(numberDensity)
@@ -275,26 +417,25 @@ def plotNISTcomparison(compResults, saveLocation):
         residualP = 0
         if rT == 0.85:
             residualU = np.array(intEns_perPart) - np.array(NIST_T085_u)
-            residualP = np.array(intEns_perPart) - np.array(NIST_T085_p)
+            residualP = np.array(pressures_minRhokT) - np.array(NIST_T085_p)
         elif rT == 0.90:
             residualU = np.array(intEns_perPart) - np.array(NIST_T09_u)
-            residualP = np.array(intEns_perPart) - np.array(NIST_T09_p)
+            residualP = np.array(pressures_minRhokT) - np.array(NIST_T09_p)
 
-        axRU1.plot(1000 * np.array(densities[:5]), residualU[:5],
+        axRU1.plot(1000 * np.array(densities[:5]), 1000*np.array(residualU[:5]),
                   ls='', marker='o', ms=4, color=cpick.to_rgba(rT), label=f'T*={rT}')
-        axRP1.plot(1000 * np.array(densities[:5]), residualP[:5],
+        axRP1.plot(1000 * np.array(densities[:5]), 1000*np.array(residualP[:5]),
                   ls='', marker='o', ms=4, color=cpick.to_rgba(rT), label=f'T*={rT}')
         axRU2.plot(np.array(densities[5:]), residualU[5:],
                   ls='', marker='o', ms=4, color=cpick.to_rgba(rT), label=f'T*={rT}')
         axRP2.plot(np.array(densities[5:]), residualP[5:],
                   ls='', marker='o', ms=4, color=cpick.to_rgba(rT), label=f'T*={rT}')
 
-    # fig.savefig(join(saveLocation, r'NIST_comparison.png'), format='png', dpi=1200)
     figU.savefig(join(saveLocation, r'NIST_u.png'), format='png', dpi=1200)
     figP.savefig(join(saveLocation, r'NIST_p.png'), format='png', dpi=1200)
 
 
-    figU.show()
+    # figU.show()
     figP.show()
 
 
@@ -454,27 +595,38 @@ def plotBinWidthEffect(BWFcRs):
 
     for i in range(len(BWFcRs)):
         (BWF, cR) = BWFcRs[i]
+        cutOffR = cR.containerLength / 2
+        u_LRC = (8 / 9) * np.pi * cR.density * ((1 / cutOffR) ** 9 - 3 * (1 / cutOffR) ** 3)
+        p_LRC = (32 / 9) * np.pi * (cR.density ** 2) * ((1 / cutOffR) ** 9 - (3 / 2) * (1 / cutOffR) ** 3)
+        # print(f'uLRC: {u_LRC},\n'
+        #       f'pLRC: {p_LRC}\n')
+
         if cR.redTemp == 1.5:
             BWFsHT.append(BWF)
-            intEnPlusErrorHT.append(cR.intEn_perPart + cR.intEnstdev)
-            intEnMinusErrorHT.append(cR.intEn_perPart - cR.intEnstdev)
-            pressurePlusErrorHT.append(cR.pressure_minRhokT + cR.pressurestdev)
-            pressureMinusErrorHT.append(cR.pressure_minRhokT - cR.pressurestdev)
+            intEnPlusErrorHT.append(cR.intEn_perPart + u_LRC + cR.intEnstdev)
+            intEnMinusErrorHT.append(cR.intEn_perPart + u_LRC - cR.intEnstdev)
+            pressurePlusErrorHT.append(cR.pressure_minRhokT + p_LRC + cR.pressurestdev)
+            pressureMinusErrorHT.append(cR.pressure_minRhokT + p_LRC - cR.pressurestdev)
         elif cR.redTemp == 0.75:
             BWFsLT.append(BWF)
-            intEnPlusErrorLT.append(cR.intEn_perPart + cR.intEnstdev)
-            intEnMinusErrorLT.append(cR.intEn_perPart - cR.intEnstdev)
-            pressurePlusErrorLT.append(cR.pressure_minRhokT + cR.pressurestdev)
-            pressureMinusErrorLT.append(cR.pressure_minRhokT - cR.pressurestdev)
+            intEnPlusErrorLT.append(cR.intEn_perPart + u_LRC + cR.intEnstdev)
+            intEnMinusErrorLT.append(cR.intEn_perPart + u_LRC - cR.intEnstdev)
+            pressurePlusErrorLT.append(cR.pressure_minRhokT + p_LRC + cR.pressurestdev)
+            pressureMinusErrorLT.append(cR.pressure_minRhokT + p_LRC - cR.pressurestdev)
             
-        axU.plot(BWF, cR.intEn_perPart,
+        axU.plot(BWF, cR.intEn_perPart + u_LRC,
                  ls='', marker='.', ms=4, color=cpick.to_rgba(cR.redTemp))
-        axP.plot(BWF, cR.pressure_minRhokT,
+        axP.plot(BWF, cR.pressure_minRhokT + p_LRC,
                  ls='', marker='.', ms=4, color=cpick.to_rgba(cR.redTemp))
 
-        axU.errorbar(BWF, cR.intEn_perPart, yerr=cR.intEnstdev,
+        print(f'at redTemp: {cR.redTemp},    BWF: {BWF},\n'
+              f'u* = {cR.intEn_perPart + u_LRC},\n'
+              f'p* = {cR.pressure_minRhokT + p_LRC}')
+
+
+        axU.errorbar(BWF, cR.intEn_perPart + u_LRC, yerr=cR.intEnstdev,
                      marker='', ls='', lw=1, ecolor=cpick.to_rgba(cR.redTemp), capsize=2)
-        axP.errorbar(BWF, cR.pressure_minRhokT, yerr=cR.pressurestdev,
+        axP.errorbar(BWF, cR.pressure_minRhokT + p_LRC, yerr=cR.pressurestdev,
                      marker='', ls='', lw=1, ecolor=cpick.to_rgba(cR.redTemp), capsize=2)
 
     alpha = 0.1
@@ -483,10 +635,9 @@ def plotBinWidthEffect(BWFcRs):
     axP.fill_between(x=BWFsHT, y1=pressurePlusErrorHT, y2=pressureMinusErrorHT, color=cpick.to_rgba(1.5), alpha=alpha)
     axP.fill_between(x=BWFsLT, y1=pressurePlusErrorLT, y2=pressureMinusErrorLT, color=cpick.to_rgba(0.75), alpha=alpha)
 
-
     fig.show()
     parent_folder = r'report/figures/binWidth'
-    fig.savefig(join(parent_folder, r'BWFeffect.png'), format='png', dpi=1200)
+    # fig.savefig(join(parent_folder, r'BWFeffect.png'), format='png', dpi=1200)
 
 
 def plotRDFs(cRs, saveLocation):
@@ -584,10 +735,15 @@ if __name__ == '__main__':
     print(f'---{timedelta(seconds=startTime)}---')
 
 
-    # cR_parent_dir = r'report/figures/excessEnergyPressure'
+    cR_parent_dir = r'report/figures/excessEnergyPressure'
+    saveLocation = cR_parent_dir
+    compResults = importCompResults(cR_parent_dir)
+    plotCompResults(compResults, saveLocation)
+
+    # cR_parent_dir = r'report/figures/Johnson'
     # saveLocation = cR_parent_dir
     # compResults = importCompResults(cR_parent_dir)
-    # plotCompResults(compResults, saveLocation)
+    # plotJohnsoncomparison(compResults, saveLocation)
 
     # cR_parent_dir = r'report/figures/NIST_comparison/compResult'
     # saveLocation = r'report/figures/NIST_comparison'
@@ -596,9 +752,9 @@ if __name__ == '__main__':
 
     # plotConvergence()
 
-    BWF_parent_dir = r'report/figures/binWidth/compResult_VaryBWFs'
-    BWFcRs = importCompResults(BWF_parent_dir)
-    plotBinWidthEffect(BWFcRs)
+    # BWF_parent_dir = r'report/figures/binWidth/compResult_VaryBWFs'
+    # BWFcRs = importCompResults(BWF_parent_dir)
+    # plotBinWidthEffect(BWFcRs)
 
     # cR_parent_dir = r'report\figures\rdfs'
     # saveLocation = cR_parent_dir
