@@ -1,2 +1,2 @@
 # L3CompProject
-Level 3 comptuing project
+Level 3 computing project
